@@ -1,0 +1,86 @@
+/**********************************************
+Contact
+**********************************************/
+@import "general.less";
+
+/**********************************************
+Contact
+**********************************************/
+.contact dt,.contact dd
+{
+	display: inline-block;
+	height: 32px;
+	line-height: 32px;
+	list-style: none;
+}
+.contact dd
+{
+	vertical-align: top;
+	margin-right: 10px;
+}
+.contact.contact a
+{
+	color: #444D58;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	text-decoration: none;
+	line-height: 32px;
+	padding: 0;
+	border: none;
+}
+.fl .contact.contact a
+{
+	font-family: Myriad;
+}
+.contact a:hover,.contact a:focus
+{
+	color: #000;
+}
+.contact dt
+{
+	height: 32px;
+	width: 32px;
+	background: url(/images/custom/contact.png);
+	text-indent: 100%;
+	overflow: hidden;
+}
+.contact .facebook
+{
+	background-position: 0 0;
+}
+.contact .skype
+{
+	background-position: -37px 0;
+}
+.contact .gg
+{
+	background-position: -74px 0;
+}
+.contact .mail
+{
+	background-position: -111px 0;
+	width: 45px;
+}
+
+@media all and (max-width:580px)
+{
+	.contact dt,.contact dd
+	{
+		float: left;
+	}
+	.contact dt
+	{
+		clear: left;
+		margin-left: 0;
+	}
+	.contact dt
+	{
+		margin-bottom: 5px;
+	}
+	.contact:after
+	{
+		content: '';
+		clear: both;
+		display: block;
+	}
+}

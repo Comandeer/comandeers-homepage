@@ -1,0 +1,63 @@
+/**********************************************
+About
+**********************************************/
+@import "general.less";
+
+/**********************************************
+About me
+**********************************************/
+.tooltip 
+{
+	position: relative;
+	font-size: 0;
+	display: inline-block;
+}
+.tooltip .tooltip-text, .tooltip .tooltip-elem
+{
+	font-size: 1rem;
+}
+.tooltip .tooltip-elem
+{
+	background-color: rgb(206,220,231); /* Old browsers */
+	background: linear-gradient(to bottom, rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* W3C */
+	border-radius: 10px;
+	z-index: 1000;
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	overflow: hidden;
+	opacity: 0;
+	/*Transitions!!!*/
+	transition: opacity 0.5s ease-in-out;
+	padding: 10px;
+	padding-bottom: 20px;
+	min-width: 100px;
+}
+.tooltip:hover .tooltip-elem, .tooltip:focus .tooltip-elem
+{
+	width: auto;
+	top: 25px;
+	left: 5px;
+	opacity: 1;
+}
+.tooltip-elem img
+{
+	display: block;
+	max-width: none;
+	max-height: 300px;
+	margin: 0 auto;
+}
+.tooltip-elem span
+{
+	display: block;
+	text-align: center;
+	font-size: .8em;
+}
+
+@media all and (max-width: 768px)
+{
+	.tooltip .tooltip-elem
+	{
+		display: none;
+	}
+}

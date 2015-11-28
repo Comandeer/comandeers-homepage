@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Tak, HTML 5. A czemu by nie? >prowokacja< -->
+	<html lang="pl" dir="ltr" itemscope itemtype="https://schema.org/WebPage">
+		<head>
+			<meta charset="UTF-8">
+			<script>{JS:"fontCheck"}</script>
+			<script>{JS:"ga"}</script>
+			<link rel="author" href="https://plus.google.com/+TomaszJakut">
+			<link rel="icon" href="/images/tooltips/comandeer.jpg">
+			<link rel="sitemap" href="{URI}sitemap.xml">
+			<meta itemprop="image" content="{URI}images/tooltips/comandeer.jpg">
+			<meta name="author" content="Comandeer">
+			<meta itemprop="description" content="{DESCRIPTION}">
+			<meta name="viewport" content="width=device-width"><!--a jednak będzie responsive :P-->
+			<!--Facebook shit...-->
+			<meta property="og:site_name" content="Comandeer's Homepage">
+			<meta property="og:url" content="{URI}{SELF}">
+			<meta property="og:title" content="{TITLE}Comandeer's Homepage">
+			<meta property="og:image" content="{URI}images/tooltips/comandeer.jpg">
+			<!--end of shit-->
+			<title itemprop="name">{TITLE}{TITLESEPARATOR}Comandeer's Homepage</title>
+			<!--[if lt IE 9]>
+				<script src="js/html5.js"></script>
+			<![endif]-->
+			<!--TODO: HTTP/2 ready version-->
+			<!--<link rel="stylesheet" href="{CSSLINK}">-->
+			<style>{CSS}</style>
+		</head>
+		<body>
+			<a href="#content" class="accessible">Przewiń do&nbsp;treści&nbsp;⇩</a>
+			<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+				<h1 class="logo"><a href="/" data-replace="[0/\/\ΛΠ|)1®" title="Skocz na główną" lang="en" hreflang="pl"><span>Comandeer</span>'s Homepage</a></h1>
+				<nav class="nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+					<h2 class="accessible" itemprop="name">Menu</h2>
+					<ul id="menu" class="nav-menu">
+						<li><a href="/o-mnie.html">O&nbsp;mnie</a></li>
+						<li><a href="/projekty.html">Projekty</a></li>
+						<li><a href="/kontakt.html">Kontakt</a></li>
+					</ul>
+				</nav>
+			</header>
+			<main id="content" class="content" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement" tabindex="-1">
+				{CONTENT}
+			</main>
+			<footer id="footer" class="footer" itemscope itemtype="https://schema.org/WPFooter">
+				Copyright © <a href="{URI}" rel="author">Comandeer</a>. Oryginalny szablon by&nbsp;<a href="http://damek.eu/creativebarons-darmowy-szablon-html">Damek</a>. Ta&nbsp;strona <a href="/cookies.html">korzysta z&nbsp;cookies</a>
+			</footer>
+			<script>{JS:"fonts"}</script>
+		</body>
+	</html>

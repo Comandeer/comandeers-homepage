@@ -1,0 +1,19 @@
+default:
+  - 'configure'
+  - 'uglify:main'
+  - 'less:main'
+  - 'autoprefixer:main'
+  - 'csso:main'
+  - 'copy:main'
+  - 'generateMenu'
+  - 'generateRobotstxt'
+  - 'generateHumanstxt'
+  - 'generateSitemap'
+  - 'buildSubpages'
+  - 'htmlmin:dist'
+  - 'csp'
+  - 'serverPushes'
+
+dist:
+  - 'default'
+  - 'imagemin:main'
