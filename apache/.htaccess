@@ -96,15 +96,6 @@ AddDefaultCharset utf-8
 AddOutputFilter DEFLATE js css html
 </IfModule>
 
-<Files ~ \.(php|php5|php6|phps|inc|shtml)$>
-SetHandler fcgid-script
-		FcgidWrapper "/fcgi/virt103030/public_html/fcgid-5.4.sh" .php
-		
-Options +ExecCGI
-		allow from all
-</Files>
-
-
 # Force Internet Explorer to render pages in the highest available
 # mode in the various cases when it may not.
 # https://hsivonen.fi/doctype/#ie8
