@@ -64,8 +64,7 @@ module.exports={
 	,serverPushes: { // nazwy zasobów, które mają być pushowane dla konkretnych podstron
 		always: [
 			'/images/custom/logo2.png'
-			,'/js/head.js'
-			,'/js/fonts.js'
+			,'/js/ga.js'
 		]
 		,projekty: [
 			'/js/zoom.js'

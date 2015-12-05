@@ -20,15 +20,6 @@ module.exports = {
 				,dest: 'dist'
 				,filter: 'isFile'
 			}
-			,{
-				expand: true
-				,flatten: true
-				,src: [
-					'resources/fonts/**'
-				]
-				,dest: 'dist/fonts'
-				,filter: 'isFile'
-			}
 		]
 	}
 };
