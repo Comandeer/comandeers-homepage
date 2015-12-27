@@ -7,7 +7,7 @@ module.exports = function(grunt)
 		,config = global.config
 		,pushes = config.serverPushes || {}
 		,pages = Object.keys(config.subpages)
-		,header = 'Header add Link "{RES};rel=preload"'
+		,header = 'Header add Link "<{RES}>;rel=preload"'
 		,pH = function(res)
 		{
 			return header.replace(/{RES}/g, res);
