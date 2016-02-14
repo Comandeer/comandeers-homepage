@@ -71,4 +71,5 @@ module.exports={
 		]
 		// TODO: push obrazków na "O mnie" i w "Projektach"
 	}
+	,CSP: "default-src 'self'; script-src 'self' *.google-analytics.com; img-src 'self' *.google-analytics.com data:; frame-src 'self' *.youtube-nocookie.com"
 };

@@ -3,6 +3,7 @@ module.exports = function(grunt)
 	grunt.registerTask('csp', function()
 	{
 		var done = this.async()
+		,config = global.config
 		,fs = require('fs')
 		,glob = require('glob')
 		,file = fs.readFileSync('apache/.htaccess', 'utf8')
@@ -17,6 +18,12 @@ module.exports = function(grunt)
 			});
 
 			return part + ' ' + (additional && additional.join(' ') || '') + ';';
+		}
+
+		if ( config.CSP ) {
+			file = file.replace( /{CSP}/g, config.CSP );
+			fs.writeFileSync('dist/.htaccess', file, 'utf8');
+			return done();
 		}
 
 		//css

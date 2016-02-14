@@ -107,12 +107,7 @@ AddOutputFilter DEFLATE js css html
 		Header set X-Content-Type-Options "nosniff"
 		Header set X-Frame-Options "SAMEORIGIN"
 		Header set Timing-Allow-Origin "*"
-		#Header set Content-Security-Policy-Report-Only "{CSP}"
-		#Header set Content-Security-Policy "{CSP}"
-
-		<FilesMatch "(403|404).html">
-			Header unset Content-Security-Policy
-		</FilesMatch>
+    Header set Content-Security-Policy "{CSP}"
 
 		# `mod_headers` cannot match based on the content-type, however, this header
 		# should be send only for HTML documents and not for the other resources
