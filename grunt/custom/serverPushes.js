@@ -3,7 +3,7 @@ module.exports = function(grunt)
 	grunt.registerTask('serverPushes', function()
 	{
 		var fs = require('fs')
-		,file = fs.readFileSync('apache/.htaccess', 'utf8')
+		,file = fs.existsSync( 'dist/.htaccess' ) ? fs.readFileSync('dist/.htaccess', 'utf8'): fs.readFileSync('apache/.htaccess', 'utf8')
 		,config = global.config
 		,pushes = config.serverPushes || {}
 		,pages = Object.keys(config.subpages)

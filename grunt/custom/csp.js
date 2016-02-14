@@ -6,7 +6,7 @@ module.exports = function(grunt)
 		,config = global.config
 		,fs = require('fs')
 		,glob = require('glob')
-		,file = fs.readFileSync('apache/.htaccess', 'utf8')
+		,file = fs.existsSync( 'dist/.htaccess' ) ? fs.readFileSync('dist/.htaccess', 'utf8'): fs.readFileSync('apache/.htaccess', 'utf8')
 		,header = 'report-uri /report.php;default-src \'self\';'
 		,generateHeader = function(type, hashes, additional)
 		{
