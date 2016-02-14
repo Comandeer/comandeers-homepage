@@ -22,5 +22,8 @@
 	},
 	"repository": "",
 	"author": "Comandeer",
-	"license": "MIT"
+	"license": "MIT",
+	"scripts": {
+		"build": "grunt dist"
+	}
 }
