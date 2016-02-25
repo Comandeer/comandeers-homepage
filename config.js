@@ -1,6 +1,6 @@
 module.exports={
 	title: 'Comandeer\'s Homepage'
-	,description: 'Comandeerowa domowa, czyli Comandeera miejsce w Sieci - ciasne, ale (chyba) własne.'
+	,description: 'Comandeerowa domowa, czyli Comandeera miejsce w Sieci – ciasne, ale (chyba) własne.'
 	,titleSeparator: ' @ ' //string oddzielający podtytuł strony od tytułu witryny
 	,layout: 'main' //główny szablon, do którego wstawiane będą podstrony
 	,frontPage: 'index' //nazwa szablonu ze stroną początkową (bez rozszerzenia; rozszerzenie = html)
@@ -24,7 +24,7 @@ module.exports={
 		,'kontakt':
 		{
 			title: 'Kontakt'
-			,description: 'Kontakt - jak dorwać Comandeera.'
+			,description: 'Kontakt – jak dorwać Comandeera.'
 			,menu: 'Kontakt'
 		}
 		,'cookies':
@@ -71,5 +71,5 @@ module.exports={
 		]
 		// TODO: push obrazków na "O mnie" i w "Projektach"
 	}
-	,CSP: "default-src 'self'; script-src 'self' *.google-analytics.com; img-src 'self' *.google-analytics.com data:; frame-src 'self' *.youtube-nocookie.com"
+	,CSP: "default-src 'self'; script-src 'self' *.google-analytics.com; img-src 'self' *.google-analytics.com data:; child-src 'self' *.youtube-nocookie.com"
 };
