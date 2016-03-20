@@ -6,70 +6,51 @@ Projects
 /**********************************************
 Projects
 **********************************************/
-.projects article
-{
+.project {
 	overflow: hidden;
 	background: url(/images/custom/hr2.png) no-repeat center bottom;
 	margin-top: 20px;
 	padding-bottom: 20px;
 }
-.projects article:first-of-type
-{
+.project:first-of-type {
 	margin-top: 0;
 }
-.projects article:last-of-type
-{
+.project:last-of-type {
 	background: none;
 	padding-bottom: 0;
 }
-.projects figure
-{
+.project__screenshot {
 	padding-top: 0;
 	margin-top: 0;
 }
-.projects figure,.desc,.features,.projects .button
-{
+.project__screenshot, .project__description, .project__features, .project__action {
 	float: left;
 }
-.desc p
-{
+.project__description p {
 	font-weight: bold;
 	clear: both;
 }
-.features li
-{
+.project__features__feature {
 	list-style: none;
 	background: url(/images/custom/feature.png) no-repeat center left;
 	padding-left: 25px;
 }
-.projects .button
-{
+.project__action {
 	clear: both;
 }
-.zoom
-{
+.project__screenshot__zoom {
 	border: none;
 	padding: 0;
 	opacity: 1;
 }
 
-.zoom:hover, .zoom:focus
-{
+.project__screenshot__zoom:hover, .project__screenshot__zoom:focus {
 	opacity: .8;
 }
 /**********************************************
 Lightbox :D
 **********************************************/
-#zoomer
-{
-	display: block;
-	max-width: 90%;
-	max-height: 90%;
-	margin: 0 auto;
-	z-index: 1000;
-}
-#overlay
-{
+.zoomer {
 	position: fixed;
 	z-index: 900;
 	top: 0;
@@ -79,4 +60,14 @@ Lightbox :D
 	background: rgba(0,0,0,.7);
 	display: none;
 	cursor: pointer;
+}
+.zoomer-visible {
+	display: block;
+}
+.zoomer__image {
+	display: block;
+	max-width: 90%;
+	max-height: 90%;
+	margin: 0 auto;
+	z-index: 1000;
 }

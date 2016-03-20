@@ -6,18 +6,15 @@ About
 /**********************************************
 About me
 **********************************************/
-.tooltip 
-{
+.tooltip {
 	position: relative;
 	font-size: 0;
 	display: inline-block;
 }
-.tooltip .tooltip-text, .tooltip .tooltip-elem
-{
+.tooltip__text, .tooltip__elem {
 	font-size: 1rem;
 }
-.tooltip .tooltip-elem
-{
+.tooltip__elem {
 	background-color: rgb(206,220,231); /* Old browsers */
 	background: linear-gradient(to bottom, rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* W3C */
 	border-radius: 10px;
@@ -33,31 +30,26 @@ About me
 	padding-bottom: 20px;
 	min-width: 100px;
 }
-.tooltip:hover .tooltip-elem, .tooltip:focus .tooltip-elem
-{
+.tooltip:hover .tooltip__elem, .tooltip:focus .tooltip__elem {
 	width: auto;
 	top: 25px;
 	left: 5px;
 	opacity: 1;
 }
-.tooltip-elem img
-{
+.tooltip__elem__image {
 	display: block;
 	max-width: none;
 	max-height: 300px;
 	margin: 0 auto;
 }
-.tooltip-elem span
-{
+.tooltip__elem__description {
 	display: block;
 	text-align: center;
 	font-size: .8em;
 }
 
-@media all and (max-width: 768px)
-{
-	.tooltip .tooltip-elem
-	{
+@media all and (max-width: 768px) {
+	.tooltip__elem {
 		display: none;
 	}
 }

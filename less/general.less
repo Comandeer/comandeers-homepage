@@ -2,8 +2,7 @@
 CSS Reset
 Yes, Eric Meyer's one
 **********************************************/
-html, body, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address, em, img, small, strong, dd, dl, dt, li, ol, ul
-{
+html, body, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address, em, img, small, strong, dd, dl, dt, li, ol, ul {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -13,24 +12,20 @@ html, body, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address, em, img, sm
 	line-height: 1.5;
 	font-family: inherit;
 }
-ol, ul 
-{
+ol, ul {
 	list-style: none;
 }
-html 
-{
+html {
 	overflow-y: scroll;
 	font-size: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	text-size-adjust: 100%;
 }
-article, aside, details, figcaption, figure, footer, header, main, nav, section 
-{
+article, aside, details, figcaption, figure, footer, header, main, nav, section {
 	display: block;
 }
-img 
-{
+img {
 	border: 0;
 	-ms-interpolation-mode: bicubic;
 	max-width: 100%;
@@ -40,8 +35,7 @@ img
 Typography
 directly from Bootstrap
 **********************************************/
-p 
-{
+p {
 	font-size: 13px;
 	font-weight: normal;
 	line-height: 18px;
@@ -54,106 +48,81 @@ h1, h2, h3, h4, h5, h6
 	clear:both;
 	line-height: 36px;
 }
-h1, h2 
-{
+h1, h2 {
 	font-size: 30px;
 }
-h3 
-{
+h3 {
 	font-size: 24px;
 }
-h4 
-{
+h4 {
 	font-size: 18px;
 }
-h5 
-{
+h5 {
 	font-size: 16px;
 }
-h6 
-{
+h6 {
 	font-size: 14px;
 	text-transform: uppercase;
 }
-abbr
-{
+abbr {
 	cursor: help;
 	border-bottom:1px #ccc dotted;
 }
-a abbr
-{
+a abbr {
 	cursor:pointer;
 	border-bottom:none;
 }
-ul, ol 
-{
+ul, ol {
 	margin: 0 0 18px 25px;
 }
-ul 
-{
+ul {
 	list-style: disc;
 }
-ol 
-{
+ol {
 	list-style: decimal;
 }
-li 
-{
+li {
 	line-height: 18px;
 }
-ul.unstyled 
-{
+ul.unstyled {
 	list-style: none;
 	margin-left: 0;
 }
-dl 
-{
+dl {
 	margin-bottom: 18px;
 }
-dl dt, dl dd 
-{
+dl dt, dl dd {
 	line-height: 18px;
 }
-dl dt 
-{
+dl dt {
 	font-weight: bold;
 }
-dl dd 
-{
+dl dd {
 	margin-left: 9px;
 }
-hr 
-{
+hr {
 	margin: 20px 0 19px;
 	border: 0;
 	border-bottom: 1px solid #eee;
 }
-strong 
-{
+strong {
 	font-style: inherit;
 	font-weight: bold;
 }
-em 
-{
+em {
 	font-style: italic;
 	font-weight: inherit;
 	line-height: inherit;
 }
-address 
-{
+address {
 	display: block;
 	line-height: 18px;
 	margin-bottom: 18px;
 }
-article h3
-{
-	margin-top:18px;
-}
 /**********************************************
 General ones
 **********************************************/
-html 
-{
+html {
 	background: #454D58 url(/images/custom/bg.png) repeat-x;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 13px;
@@ -162,50 +131,37 @@ html
 	color: #fff;
 	height:100%;
 }
-body
-{
+body {
 	min-height: 100%;
 	margin: auto;
 	width: 980px;
 	position: relative;
 }
 
-h1, h2, h3, h4, h5, h6
-{
+h1, h2, h3, h4, h5, h6 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	clear: both;
 }
-h2, h3
-{
-	color: #fff;
-	text-shadow: #444d58 0px -1px 1px;
-}
-a
-{
+a {
 	text-decoration: underline;
 	color: #fff;
 	/*Transitions!!!*/
 	transition: background 0.5s ease-in-out, color 0.5s ease-in-out, outline 0.5s ease-in-out;
 }
-a:hover, a:focus
-{
+a:hover, a:focus {
 	text-decoration: none;
 	color: #ddd; 
 }
-a:focus
-{
+a:focus {
 	outline: 1px solid rgb(100,50,200);
 }
-.button.disabled, .button[disabled]
-{
+.button-disabled, .button[disabled] {
 	cursor: not-allowed;
 }
-.button:focus, .logo a:focus, .nav-menu a:focus
-{
+.button:focus, .header__logo__link:focus, .nav__menu__item__link:focus {
 	outline: none;
 }
-.button, .button.disabled:hover, .button.disabled:focus
-{
+.button, .button-disabled:hover, .button-disabled:focus {
 	display: inline-block;
 	background-color: rgb(236,237,240); /* Old browsers */
 	background: linear-gradient(to bottom, rgba(236,237,240,1) 0%,rgba(228,230,233,1) 2%,rgba(213,216,220,1) 20%,rgba(202,205,210,1) 29%,rgba(135,141,150,1) 78%,rgba(121,128,138,1) 90%,rgba(113,121,131,1) 100%); /* W3C */
@@ -222,23 +178,19 @@ a:focus
 	border: none;
 	margin: 20px;
 }
-.button:hover, .button:focus 
-{
+.button:hover, .button:focus {
 	background-color: rgb(111,119,129); /* Old browsers */
 	background: linear-gradient(to bottom, rgba(111,119,129,1) 0%,rgba(121,128,138,1) 13%,rgba(135,141,150,1) 25%,rgba(202,205,210,1) 75%,rgba(213,216,220,1) 85%,rgba(226,228,232,1) 100%); /* W3C */
 	color: #3d454e;
 }
-.header
-{
+.header {
 	height: 96px;
 	overflow: hidden;
 }
-.logo
-{
+.header__logo {
 	float: left;
 }
-.logo a
-{
+.header__logo__link {
 	display: table-cell;
 	text-decoration: none;
 	height: 96px;
@@ -249,29 +201,24 @@ a:focus
 	position: relative;
 	border: none;
 }
-.logo a:hover:before, .logo a:focus:before
-{
+.header__logo__link:hover:before, .header__logo__link:focus:before {
 	content: attr(data-replace);
 	display: inline-block;
 }
-.logo a:hover span, .logo a:focus span
-{
+.header__logo__link:hover .header__logo__link__replaceText, .header__logo__link:focus .header__logo__link__replaceText {
 	position: absolute;
 	clip: rect(0,0,0,0);
 }
-.logo a:hover, .logo a:focus
-{
+.header__logo__link:hover, .header__logo__link:focus {
 	background-position: 0 -96px;
 }
-.nav
-{
+.header__nav {
 	float: right;
 	font-size: 16px;
 	padding-top: 43px;
 }
 
-.nav-menu li 
-{
+.nav__menu__item {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	display: inline-block;
 	padding-left: 15px;
@@ -279,8 +226,7 @@ a:focus
 }
 
 
-.nav-menu a 
-{
+.nav__menu__item__link {
 	padding: 5px 10px 5px 10px;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-decoration: none;
@@ -289,21 +235,24 @@ a:focus
 	border: none;
 }
 
-.nav-menu a:hover, .nav-menu a:focus
-{
+.nav__menu__item__link:hover, .nav__menu__item__link:focus {
 	color: #444d58;
 	background: #fff;  
 }
-.content
-{
+.content {
 	clear: both;
 	min-height: 420px;
 	margin-top: 36px;
 	padding: 0 12px 60px 12px;
 	outline: none;
 }
-.box, .footer
-{
+.article__title {
+	font-size: 30px;
+	margin-top: 18px;
+	color: #fff;
+	text-shadow: #444d58 0px -1px 1px;
+}
+.box, .footer {
 	border-radius: 10px;
 	background-color: rgb(254,255,255); /* Old browsers */
 	background: linear-gradient(to bottom, rgba(254,255,255,1) 0%,rgba(252,252,252,1) 5%,rgba(253,253,253,1) 9%,rgba(251,253,252,1) 10%,rgba(249,250,249,1) 11%,rgba(253,253,253,1) 12%,rgba(251,253,250,1) 12%,rgba(249,250,252,1) 17%,rgba(248,250,247,1) 19%,rgba(251,253,250,1) 20%,rgba(249,250,250,1) 21%,rgba(247,249,246,1) 22%,rgba(248,249,251,1) 22%,rgba(248,249,251,1) 24%,rgba(248,250,247,1) 24%,rgba(249,250,249,1) 25%,rgba(246,248,247,1) 25%,rgba(247,249,246,1) 25%,rgba(247,248,250,1) 26%,rgba(246,247,249,1) 27%,rgba(247,249,246,1) 28%,rgba(244,245,247,1) 29%,rgba(246,247,249,1) 29%,rgba(244,245,247,1) 30%,rgba(247,248,250,1) 31%,rgba(245,246,246,1) 32%,rgba(242,243,245,1) 43%,rgba(240,241,243,1) 44%,rgba(241,242,244,1) 47%,rgba(238,239,241,1) 50%,rgba(237,238,240,1) 60%,rgba(235,236,238,1) 60%,rgba(234,236,235,1) 68%,rgba(232,233,235,1) 70%,rgba(234,235,237,1) 71%,rgba(230,232,236,1) 71%,rgba(234,236,235,1) 72%,rgba(232,233,235,1) 73%,rgba(232,233,235,1) 75%,rgba(229,230,234,1) 76%,rgba(228,234,234,1) 76%,rgba(228,232,235,1) 77%,rgba(232,233,235,1) 77%,rgba(227,232,235,1) 79%,rgba(226,232,232,1) 80%,rgba(230,231,235,1) 82%,rgba(226,231,234,1) 83%,rgba(229,230,234,1) 86%,rgba(225,230,233,1) 87%,rgba(225,230,233,1) 89%,rgba(229,230,234,1) 90%,rgba(224,228,232,1) 90%,rgba(224,228,232,1) 92%,rgba(226,232,232,1) 93%,rgba(222,227,230,1) 93%,rgba(225,230,233,1) 94%,rgba(226,227,231,1) 94%,rgba(225,230,233,1) 95%,rgba(224,228,232,1) 96%,rgba(226,232,232,1) 97%,rgba(222,227,230,1) 97%,rgba(225,230,233,1) 98%,rgba(231,236,239,1) 98%,rgba(228,234,234,1) 99%,rgba(226,227,231,1) 99%,rgba(220,225,228,1) 100%,rgba(222,227,230,1) 100%); /* W3C */
@@ -311,22 +260,7 @@ a:focus
 	color: #444d58;
 	padding: 6px;
 }
-.box a, .footer a 
-{
-	color: #444d58;
-}
-.footer a:hover, .footer a:focus
-{
-	color: #000;
-}
-.box h2, .box h3
-{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #444D58;
-	clear: both;
-}
-.footer
-{
+.footer {
 	clear: both;
 	position: absolute;
 	bottom: 0;
@@ -337,25 +271,36 @@ a:focus
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
-.footer a
-{
+.box__title {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #444D58;
+	clear: both;
+	font-size: 24px;
+}
+
+.footer__link{
 	padding: 0;
 	border: none;
 	line-height: 1;
 	text-decoration: underline;
 }
 
+.box__link, .footer__link {
+	color: #444d58;
+}
+.footer__link:hover, .footer__link:focus {
+	color: #000;
+}
+
 
 /**********************************************
 Accessibility
 **********************************************/
-.accessible
-{
+.accessible {
 	position: absolute;
 	clip: rect(0,0,0,0);
 }
-.accessible:focus
-{
+.accessible:focus {
 	clip: auto;
 	z-index: 10;
 	margin-left: 100px;
@@ -365,28 +310,22 @@ Accessibility
 /**********************************************
 Media queries
 **********************************************/
-@media all and (max-width:980px)
-{
-	body
-	{
+@media all and (max-width:980px) {
+	body {
 		width: 768px;
 	}
 }
-@media all and (max-width:768px)
-{
-	body
-	{
+@media all and (max-width:768px) {
+	body {
 		width: 640px;
 	}
 
-	.nav
-	{
+	.header__nav {
 		float: none;
 		text-align: center;
 	}
 
-	a
-	{
+	a {
 		display: inline-block;
 		padding: 10px;
 		margin: 5px 0;
@@ -395,20 +334,16 @@ Media queries
 		vertical-align: middle;
 	}
 
-	.footer
-	{
+	.footer {
 		position: static;
 	}
 }
-@media all and (max-width:640px)
-{
-	body
-	{
+@media all and (max-width:640px) {
+	body {
 		width: 100%;
 	}
 
-	.logo a
-	{
+	.header__logo__link {
 		width: 96px;
 		padding-left: 0;
 		text-indent: 100%;
@@ -416,15 +351,12 @@ Media queries
 		overflow: hidden;
 	}
 
-	.nav
-	{
+	.header__nav {
 		padding-top: 10px;
 	}
 }
-@media all and (max-width:580px)
-{
-	.header
-	{
+@media all and (max-width:580px) {
+	.header {
 		overflow: visible;
 	}
 }
