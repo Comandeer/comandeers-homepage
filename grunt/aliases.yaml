@@ -1,5 +1,5 @@
 default:
-  - 'clean'
+#  - 'clean'
   - 'configure'
   - 'uglify:main'
   - 'less:main'
