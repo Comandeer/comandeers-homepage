@@ -153,7 +153,8 @@ a:hover, a:focus {
 	color: #ddd; 
 }
 a:focus {
-	outline: 1px solid rgb(100,50,200);
+	outline: 1px solid #fff;
+	outline-offset: 3px;
 }
 .button-disabled, .button[disabled] {
 	cursor: not-allowed;
@@ -288,7 +289,11 @@ a:focus {
 .box__link, .footer__link {
 	color: #444d58;
 }
-.footer__link:hover, .footer__link:focus {
+.box__link:focus, .footer__link:focus {
+	outline-color: #444d58;
+}
+
+.footer__link:hover, .box__link:hover, .box__link:focus, .footer__link:focus {
 	color: #000;
 }
 
