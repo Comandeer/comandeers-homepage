@@ -157,6 +157,9 @@ Options +FollowSymLinks
   RewriteCond %{HTTPS} =on
   RewriteRule ^(.+)$ https://www.comandeer.pl/$1 [R=301,L]
 
+	RewriteCond %{THE_REQUEST} ^.*/index\.(php|html|htm)
+	RewriteRule ^(.*)index.(php|html|htm)$ /$1 [R=301,L]
+
   RewriteRule ^o_mnie.html$ /o-mnie.html [R=301,L]
 
   RewriteCond %{HTTP_HOST} ^www\.comandeer\.pl [NC,OR]
