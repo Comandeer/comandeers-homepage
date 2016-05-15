@@ -41,7 +41,7 @@ p {
 	line-height: 18px;
 	margin-bottom: 9px;
 }
-h1, h2, h3, h4, h5, h6 
+h1, h2, h3, h4, h5, h6
 {
 	font-weight: bold;
 	margin-bottom: 18px;
@@ -150,7 +150,7 @@ a {
 }
 a:hover, a:focus {
 	text-decoration: none;
-	color: #ddd; 
+	color: #ddd;
 }
 a:focus {
 	outline: 1px solid #fff;
@@ -196,19 +196,26 @@ a:focus {
 	text-decoration: none;
 	height: 96px;
 	background: url(/images/custom/logo2.png) no-repeat;
-	padding: 0; 
+	padding: 0;
 	padding-left: 96px;
 	vertical-align: middle;
 	position: relative;
 	border: none;
 }
-.header__logo__link:hover:before, .header__logo__link:focus:before {
-	content: attr(data-replace);
+.header__logo__link__replace {
+	display: none;
+}
+.header__logo__link:hover .header__logo__link__replace, .header__logo__link:focus .header__logo__link__replace {
 	display: inline-block;
 }
-.header__logo__link:hover .header__logo__link__replaceText, .header__logo__link:focus .header__logo__link__replaceText {
+.header__logo__link:hover .header__logo__link__text, .header__logo__link:focus .header__logo__link__text {
 	position: absolute;
 	clip: rect(0,0,0,0);
+	height: 1px;
+	width: 1px;
+	padding: 0;
+	border: 0;
+	margin: -1px;
 }
 .header__logo__link:hover, .header__logo__link:focus {
 	background-position: 0 -96px;
@@ -238,7 +245,7 @@ a:focus {
 
 .nav__menu__item__link:hover, .nav__menu__item__link:focus {
 	color: #444d58;
-	background: #fff;  
+	background: #fff;
 }
 .content {
 	clear: both;
@@ -304,13 +311,22 @@ Accessibility
 .accessible {
 	position: absolute;
 	clip: rect(0,0,0,0);
+	height: 1px;
+	width: 1px;
+	padding: 0;
+	border: 0;
+	margin: -1px;
 }
 .accessible:focus {
 	clip: auto;
 	z-index: 10;
-	margin-left: 100px;
+	width: auto;
+	height: auto;
 }
 
+.skip-link {
+	margin-left: 100px;
+}
 
 /**********************************************
 Media queries
