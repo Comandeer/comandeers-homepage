@@ -46,7 +46,7 @@
 		overlay.appendChild( notification );
 		document.body.appendChild( overlay );
 
-		for( var zoomLinks = document.getElementsByClassName( 'project__screenshot__zoom' ), i = 0; i < zoomLinks.length; ++i )
+		for( var zoomLinks = document.getElementsByClassName( 'screenshot__zoom' ), i = 0; i < zoomLinks.length; ++i )
 			zoomLinks[ i ].addEventListener( 'click', function( evt ) {
 				if ( !this.href ) {
 					return true;
