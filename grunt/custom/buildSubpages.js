@@ -14,7 +14,7 @@ module.exports = function(grunt)
 			{
 				var content = fs.readFileSync('dist/js/' + name + '.js')
 				,hash = crypto.createHash('sha256');
-				
+
 				hash.update(content);
 
 				fs.writeFileSync('hashes/js/' + name + '.hash', hash.digest('base64'), 'utf8');
@@ -42,7 +42,11 @@ module.exports = function(grunt)
 			output = includeJS(output);
 			return output;
 		};
-
+		try {
+			fs.mkdirSync( 'hashes' );
+			fs.mkdirSync( 'hashes/css' );
+			fs.mkdirSync( 'hashes/js' );
+		} catch( e ) {}
 		Object.keys(subpages).forEach(function(t)
 		{
 			var subPage = fs.readFileSync('templates/' + t + '.html','utf8')
