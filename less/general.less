@@ -10,7 +10,6 @@ html, body, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address, em, img, sm
 	font-style: normal;
 	font-size: 100%;
 	line-height: 1.5;
-	font-family: inherit;
 }
 ol, ul {
 	list-style: none;
@@ -123,7 +122,9 @@ General ones
 **********************************************/
 html {
 	background: #454D58 url(/images/custom/bg.png) repeat-x;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/* https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/ */
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+	"Droid Sans", "Helvetica Neue", sans-serif;
 	font-size: 13px;
 	font-weight: normal;
 	line-height: 18px;
@@ -138,7 +139,6 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	clear: both;
 }
 a {
@@ -178,7 +178,6 @@ a:focus {
 	height: 38px;
 	line-height: 38px;
 	font-size: 18px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	padding: 0 5px 0 5px;
 	border: none;
 	margin: 20px;
@@ -226,7 +225,6 @@ a:focus {
 }
 
 .menu__item {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	display: inline-block;
 	padding-left: 15px;
 	height: 40px;
@@ -235,7 +233,6 @@ a:focus {
 
 .menu__link {
 	padding: 5px 10px 5px 10px;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-decoration: none;
 	text-transform: uppercase;
 	border-radius: 21px;
@@ -279,7 +276,6 @@ a:focus {
 	border-bottom-left-radius: 0;
 }
 .box__title {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	color: #444D58;
 	clear: both;
 	font-size: 24px;
