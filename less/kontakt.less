@@ -8,20 +8,20 @@ Contact
 **********************************************/
 .contact__method, .contact__item {
 	display: inline-block;
-	height: 32px;
-	line-height: 32px;
+	height: 2rem;
+	line-height: 2;
 	list-style: none;
 }
 .contact__item {
 	vertical-align: top;
-	margin-right: 10px;
+	margin-right: 0.625rem;
 }
 .contact__link {
 	color: #444D58;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 18px;
+	font-size: 1.125rem;
 	text-decoration: none;
-	line-height: 32px;
+	line-height: 2;
 	padding: 0;
 	border: none;
 }
@@ -49,16 +49,13 @@ Contact
 	width: 45px;
 }
 
-@media all and (max-width:580px) {
+@media all and (max-width: 580px) {
 	.contact__method, .contact__item {
 		float: left;
 	}
 	.contact__method {
 		clear: left;
 		margin-left: 0;
-	}
-	.contact__method {
-		margin-bottom: 5px;
 	}
 	.contact:after {
 		content: '';

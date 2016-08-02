@@ -9,8 +9,9 @@ Projects
 .project {
 	overflow: hidden;
 	background: url(/images/custom/hr2.png) no-repeat center bottom;
-	margin-top: 20px;
-	padding-bottom: 20px;
+	margin-top: 1.25rem;
+	padding-bottom: 1.25rem;
+	display: table;
 }
 .project:first-of-type {
 	margin-top: 0;
@@ -23,8 +24,21 @@ Projects
 	padding-top: 0;
 	margin-top: 0;
 }
-.project__screenshot, .project__description, .project__features, .project__action {
+.project__name {
+	margin-top: 0;
+}
+.project__screenshot, .project__description {
+	display: table-cell;
+	vertical-align: top;
+}
+.project__description {
+	padding-left: 1rem;
+}
+.project__features, .project__action {
 	float: left;
+}
+.project__features {
+	margin-left: 0;
 }
 .project__description p {
 	font-weight: bold;
