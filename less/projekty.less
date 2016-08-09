@@ -9,8 +9,8 @@ Projects
 .project {
 	overflow: hidden;
 	background: url(/images/custom/hr2.png) no-repeat center bottom;
-	margin-top: 1.25rem;
-	padding-bottom: 1.25rem;
+	margin-top: unit( @baseLineHeight, rem );
+	padding-bottom: unit( @baseLineHeight, rem );
 	display: table;
 }
 .project:first-of-type {
@@ -47,7 +47,7 @@ Projects
 .features__feature {
 	list-style: none;
 	background: url(/images/custom/feature.png) no-repeat center left;
-	padding-left: 25px;
+	padding-left: @featuresImageWidth;
 }
 .project__action {
 	clear: both;

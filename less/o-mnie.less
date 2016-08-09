@@ -15,9 +15,9 @@ About me
 	font-size: 1rem;
 }
 .tooltip__elem {
-	background-color: rgb(206,220,231); /* Old browsers */
-	background: linear-gradient(to bottom, rgba(206,220,231,1) 0%,rgba(89,106,114,1) 100%); /* W3C */
-	border-radius: 10px;
+	background-color: @tooltipBackgroundStatic;
+	background: @tooltipBackground;
+	border-radius: @baseBorderRadius;
 	z-index: 1000;
 	position: absolute;
 	top: -9999px;
@@ -26,14 +26,14 @@ About me
 	opacity: 0;
 	/*Transitions!!!*/
 	transition: opacity 0.5s ease-in-out;
-	padding: 0.625rem;
-	padding-bottom: 1.25rem;
-	min-width: 6rem;
+	padding: unit( @baseLineHeight / 2, rem );
+	padding-bottom: unit( @baseLineHeight, rem );
+	min-width: unit( @baseLineHeight * 3, rem );
 }
 .tooltip:hover .tooltip__elem, .tooltip:focus .tooltip__elem {
 	width: auto;
-	top: 1.5rem;
-	left: 0.3125rem;
+	top: unit( @baseLineHeight, rem );
+	left: unit( @baseLineHeight / 3, rem );
 	opacity: 1;
 }
 .tooltip__image {
@@ -45,7 +45,7 @@ About me
 .tooltip__description {
 	display: block;
 	text-align: center;
-	font-size: 0.8rem;
+	font-size: .8rem;
 }
 
 @media all and (max-width: 768px) {

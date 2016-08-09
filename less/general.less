@@ -1,4 +1,8 @@
 /**********************************************
+Variables import
+**********************************************/
+@import "vars.less";
+/**********************************************
 CSS Reset
 Yes, Eric Meyer's one
 **********************************************/
@@ -8,7 +12,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address, em, img, sm
 	border: 0;
 	font-weight: normal;
 	font-style: normal;
-	line-height: 1.5;
+	line-height: @baseLineHeight;
 }
 ol, ul {
 	list-style: none;
@@ -34,40 +38,43 @@ directly from Bootstrap
 **********************************************/
 p {
 	font-weight: normal;
-	margin-bottom: 0.5625rem;
+	margin-bottom: unit( @baseLineHeight / 2, rem );
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
-	margin-bottom: 1.125rem;
+	margin-bottom: unit( @baseLineHeight, rem );
 	clear:both;
-	line-height: 2.25rem;
+	line-height: unit( @baseLineHeight * 2, rem );
 }
-h1, h2 {
-	font-size: 1.875rem;
+h1 {
+	font-size: @h1Size;
+}
+h2 {
+	font-size: @h2Size;
 }
 h3 {
-	font-size: 1.5rem;
+	font-size: @h3Size;
 }
 h4 {
-	font-size: 1.125rem;
+	font-size: @h4Size;
 }
 h5 {
-	font-size: 1rem;
+	font-size: @h5Size;
 }
 h6 {
-	font-size: 0.875rem;
+	font-size: @h6Size;
 	text-transform: uppercase;
 }
 abbr {
 	cursor: help;
-	border-bottom: 1px #ccc dotted;
+	border-bottom: @abbrBottom;
 }
 a abbr {
 	cursor: pointer;
 	border-bottom: none;
 }
 ul, ol {
-	margin: 0 0 1.125rem 1.5rem;
+	margin: 0 unit( @baseLineHeight, rem );
 }
 ul {
 	list-style: disc;
@@ -80,18 +87,18 @@ ul.unstyled {
 	margin-left: 0;
 }
 dl {
-	margin-bottom: 1.125rem;
+	margin-bottom: unit( @baseLineHeight / 2, rem );
 }
 dl dt {
 	font-weight: bold;
 }
 dl dd {
-	margin-left: 0.5625rem;
+	margin-left: unit( @baseLineHeight / 2, rem );
 }
 hr {
-	margin: 1.25rem 0 1.25rem;
+	margin: unit( @baseLineHeight, rem ) 0 unit( @baseLineHeight / 2, rem );
 	border: 0;
-	border-bottom: 1px solid #eee;
+	border-bottom: @hrWidth solid @hrColor;
 }
 strong {
 	font-style: inherit;
@@ -104,24 +111,22 @@ em {
 }
 address {
 	display: block;
-	margin-bottom: 1.125rem;
+	margin-bottom: @baseLineHeight;
 }
 /**********************************************
 General ones
 **********************************************/
 html {
-	background: #454D58 url(/images/custom/bg.png) repeat-x;
-	/* https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/ */
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-	"Droid Sans", "Helvetica Neue", sans-serif;
+	background: @pageBackground;
+	font-family: @baseFontFamily;
 	font-weight: normal;
-	color: #fff;
+	color: @baseColor;
 	height: 100%;
 }
 body {
 	min-height: 100%;
 	margin: auto;
-	width: 980px;
+	width: @bodyWidth;
 	position: relative;
 }
 
@@ -130,16 +135,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 a {
 	text-decoration: underline;
-	color: #fff;
+	color: @baseColor;
 	/*Transitions!!!*/
 	transition: background 0.5s ease-in-out, color 0.5s ease-in-out, outline 0.5s ease-in-out;
 }
 a:hover, a:focus {
 	text-decoration: none;
-	color: #ddd;
+	color: darken( @linkColor, 10% );
 }
 a:focus {
-	outline: 1px solid #fff;
+	outline: 1px solid @baseColor;
 	outline-offset: 3px;
 }
 .button_disabled, .button[disabled] {
@@ -149,28 +154,28 @@ a:focus {
 	outline: none;
 }
 .button:hover, .button:focus {
-	background-color: rgb(111,119,129); /* Old browsers */
-	background: linear-gradient(to bottom, rgba(111,119,129,1) 0%,rgba(121,128,138,1) 13%,rgba(135,141,150,1) 25%,rgba(202,205,210,1) 75%,rgba(213,216,220,1) 85%,rgba(226,228,232,1) 100%); /* W3C */
-	color: #3d454e;
+	background-color: @buttonHoverBackgroundStatic;
+	background: @buttonHoverBackground;
+	color: @buttonColor;
 }
 .button, .button_disabled:hover, .button_disabled:focus {
 	display: inline-block;
-	background-color: rgb(236,237,240); /* Old browsers */
-	background: linear-gradient(to bottom, rgba(236,237,240,1) 0%,rgba(228,230,233,1) 2%,rgba(213,216,220,1) 20%,rgba(202,205,210,1) 29%,rgba(135,141,150,1) 78%,rgba(121,128,138,1) 90%,rgba(113,121,131,1) 100%); /* W3C */
-	color: #3d454e;
-	text-shadow: #b6bbc5 1px 1px 1px;
+	background-color: @buttonBackgroundStatic;
+	background: @buttonBackground;
+	color: @buttonColor;
+	text-shadow: @buttonShadow;
 	text-align: center;
 	text-decoration: none;
-	border-radius: 10px;
-	height: 2.25rem;
-	line-height: 2.25;
-	font-size: 1.125rem;
-	padding: 0 0.3125rem 0 0.3125rem;
+	border-radius: @baseBorderRadius;
+	height: unit( @baseLineHeight * 2, rem );
+	line-height: @baseLineHeight * 2;
+	font-size: @baseLineHeight;
+	padding: 0 unit( @baseLineHeight / 3, rem ) 0 unit( @baseLineHeight / 3, rem );
 	border: none;
-	margin: 1.25rem;
+	margin: unit( @baseLineHeight, rem );
 }
 .header {
-	height: 96px;
+	height: @logoHeight;
 	overflow: hidden;
 }
 .header__logo {
@@ -179,10 +184,10 @@ a:focus {
 .logo__link {
 	display: table-cell;
 	text-decoration: none;
-	height: 96px;
-	background: url(/images/custom/logo2.png) no-repeat;
+	height: @logoHeight;
+	background: url(@logoURL) no-repeat;
 	padding: 0;
-	padding-left: 96px;
+	padding-left: @logoWidth;
 	vertical-align: middle;
 	position: relative;
 	border: none;
@@ -195,7 +200,7 @@ a:focus {
 }
 .logo__link:hover .logo__text, .logo__link:focus .logo__text {
 	position: absolute;
-	clip: rect(0,0,0,0);
+	clip: rect( 0, 0, 0, 0 );
 	height: 1px;
 	width: 1px;
 	padding: 0;
@@ -203,52 +208,56 @@ a:focus {
 	margin: -1px;
 }
 .logo__link:hover, .logo__link:focus {
-	background-position: 0 -96px;
+	background-position: 0 -@logoHeight;
 }
 .header__nav {
 	float: right;
-	padding-top: 43px;
+	font-size: @navFontSize;
+	padding-top: @logoHeight / 2;
+	margin-top: -@navFontSize / 2;
 }
 
 .menu__item {
 	display: inline-block;
-	padding-left: 1rem;
-	height: 2rem;
+	padding-left: unit( @baseLineHeight, rem );
+	height: unit( @baseLineHeight * 2, rem );
 }
 
 
 .menu__link {
-	padding: 0.3125rem 0.625rem 0.3125rem 0.625rem;
+	padding: unit( @baseLineHeight / 3, rem ) unit( @baseLineHeight / 2, rem );
 	text-decoration: none;
 	text-transform: uppercase;
-	border-radius: 21px;
+	border-radius: @baseBorderRadius * 2;
 	border: none;
+	color: @menuColor;
+	background: @menuBackground;
 }
 
 .menu__link:hover, .menu__link:focus {
-	color: #444d58;
-	background: #fff;
+	color: @menuHoverColor;
+	background: @menuHoverBackground;
 }
 .content {
 	clear: both;
-	min-height: 420px;
-	margin-top: 2rem;
-	padding: 0 12px 60px 12px;
+	min-height: unit( @baseLineHeight * 4, rem );
+	margin-top: unit( @baseLineHeight * 2, rem );
+	padding: 0 unit( @baseLineHeight / 2, rem ) unit( @baseLineHeight * 3, rem ) unit( @baseLineHeight / 2, rem );
 	outline: none;
 }
 .article__title {
-	font-size: 1.875rem;
-	margin-top: 1.125rem;
-	color: #fff;
-	text-shadow: #444d58 0px -1px 1px;
+	font-size: @h1Size;
+	margin-top: unit( @baseLineHeight, rem );
+	color: @baseColor;
+	text-shadow: @articleTitleShadow;
 }
 .box, .footer {
-	border-radius: 10px;
-	background-color: rgb(254,255,255); /* Old browsers */
-	background: linear-gradient(to bottom, rgba(254,255,255,1) 0%,rgba(252,252,252,1) 5%,rgba(253,253,253,1) 9%,rgba(251,253,252,1) 10%,rgba(249,250,249,1) 11%,rgba(253,253,253,1) 12%,rgba(251,253,250,1) 12%,rgba(249,250,252,1) 17%,rgba(248,250,247,1) 19%,rgba(251,253,250,1) 20%,rgba(249,250,250,1) 21%,rgba(247,249,246,1) 22%,rgba(248,249,251,1) 22%,rgba(248,249,251,1) 24%,rgba(248,250,247,1) 24%,rgba(249,250,249,1) 25%,rgba(246,248,247,1) 25%,rgba(247,249,246,1) 25%,rgba(247,248,250,1) 26%,rgba(246,247,249,1) 27%,rgba(247,249,246,1) 28%,rgba(244,245,247,1) 29%,rgba(246,247,249,1) 29%,rgba(244,245,247,1) 30%,rgba(247,248,250,1) 31%,rgba(245,246,246,1) 32%,rgba(242,243,245,1) 43%,rgba(240,241,243,1) 44%,rgba(241,242,244,1) 47%,rgba(238,239,241,1) 50%,rgba(237,238,240,1) 60%,rgba(235,236,238,1) 60%,rgba(234,236,235,1) 68%,rgba(232,233,235,1) 70%,rgba(234,235,237,1) 71%,rgba(230,232,236,1) 71%,rgba(234,236,235,1) 72%,rgba(232,233,235,1) 73%,rgba(232,233,235,1) 75%,rgba(229,230,234,1) 76%,rgba(228,234,234,1) 76%,rgba(228,232,235,1) 77%,rgba(232,233,235,1) 77%,rgba(227,232,235,1) 79%,rgba(226,232,232,1) 80%,rgba(230,231,235,1) 82%,rgba(226,231,234,1) 83%,rgba(229,230,234,1) 86%,rgba(225,230,233,1) 87%,rgba(225,230,233,1) 89%,rgba(229,230,234,1) 90%,rgba(224,228,232,1) 90%,rgba(224,228,232,1) 92%,rgba(226,232,232,1) 93%,rgba(222,227,230,1) 93%,rgba(225,230,233,1) 94%,rgba(226,227,231,1) 94%,rgba(225,230,233,1) 95%,rgba(224,228,232,1) 96%,rgba(226,232,232,1) 97%,rgba(222,227,230,1) 97%,rgba(225,230,233,1) 98%,rgba(231,236,239,1) 98%,rgba(228,234,234,1) 99%,rgba(226,227,231,1) 99%,rgba(220,225,228,1) 100%,rgba(222,227,230,1) 100%); /* W3C */
+	border-radius: @baseBorderRadius;
+	background-color: @footerBackgroundStatic;
+	background: @footerBackground;
 	clear: both;
-	color: #444d58;
-	padding: 0.375rem;
+	color: @pageBackgroundColor;
+	padding: unit( @baseLineHeight / 3, rem );
 }
 .footer {
 	clear: both;
@@ -256,15 +265,15 @@ a:focus {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	line-height: 3;
-	padding-left: 0.75rem;
+	line-height: @baseLineHeight * 2;
+	padding-left: unit( @baseLineHeight / 2, rem );
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
 .box__title {
-	color: #444D58;
+	color: @pageBackgroundColor;
 	clear: both;
-	font-size: 1.5rem;
+	font-size: @h3Size;
 }
 
 .footer__link{
@@ -275,14 +284,14 @@ a:focus {
 }
 
 .box__link, .footer__link {
-	color: #444d58;
+	color: @pageBackgroundColor;
 }
 .box__link:focus, .footer__link:focus {
-	outline-color: #444d58;
+	outline-color: @pageBackgroundColor;
 }
 
 .footer__link:hover, .box__link:hover, .box__link:focus, .footer__link:focus {
-	color: #000;
+	color: darken( @pageBackgroundColor, 10% );
 }
 
 
@@ -306,7 +315,8 @@ Accessibility
 }
 
 .skip-link {
-	margin-left: 100px;
+	margin-left: @logoWidth;
+	padding-left: unit( @baseLineHeight / 3, rem )
 }
 
 /**********************************************
@@ -329,8 +339,8 @@ Media queries
 
 	a {
 		display: inline-block;
-		padding: 0.625rem;
-		margin: 0.3125rem 0;
+		padding: unit( @baseLineHeight / 2, rem );
+		margin: unit( @baseLineHeight / 3, rem ) 0;
 		border: 1px #fff solid;
 		text-decoration: none;
 		vertical-align: middle;
@@ -346,7 +356,7 @@ Media queries
 	}
 
 	.logo__link {
-		width: 96px;
+		width: @logoWidth;
 		padding-left: 0;
 		text-indent: 100%;
 		font: 0/0 a;
@@ -354,7 +364,7 @@ Media queries
 	}
 
 	.header__nav {
-		padding-top: 10px;
+		padding-top: unit( @baseLineHeight / 3, rem );
 	}
 }
 @media all and (max-width: 580px) {
