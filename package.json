@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "cheerio": "^0.20.0",
-    "glob": "^7.0.3",
+    "glob": "^7.0.5",
     "grunt": "^1.0.1",
     "grunt-autoprefixer": "^3.0.3",
     "grunt-contrib-clean": "^1.0.0",
