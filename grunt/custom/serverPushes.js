@@ -19,7 +19,7 @@ module.exports = function(grunt)
 			{RULES}
 		</FilesMatch>\n`
 		,output = '';
-		
+
 		if(pushes.always)
 		{
 			var alwaysRules = [];

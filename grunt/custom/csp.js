@@ -6,12 +6,12 @@ module.exports = function(grunt)
 		,config = global.config
 		,fs = require('fs')
 		,glob = require('glob')
-		,file = fs.existsSync( 'dist/.htaccess' ) ? fs.readFileSync('dist/.htaccess', 'utf8'): fs.readFileSync('apache/.htaccess', 'utf8')
+		,file = fs.readFileSync('apache/.htaccess', 'utf8')
 		,header = 'report-uri /report.php;default-src \'self\';'
 		,generateHeader = function(type, hashes, additional)
 		{
 			var part = type + '-src \'self\'';
-			
+
 			hashes && hashes.forEach(function(hash)
 			{
 				part += " 'sha256-" + fs.readFileSync(hash, 'utf8') + "'";
