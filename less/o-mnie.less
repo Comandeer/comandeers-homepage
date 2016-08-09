@@ -10,11 +10,13 @@ About me
 	position: relative;
 	font-size: 0;
 	display: inline-block;
+
 }
 .tooltip__text, .tooltip__elem {
 	font-size: 1rem;
 }
 .tooltip__elem {
+	display: none;
 	background-color: @tooltipBackgroundStatic;
 	background: @tooltipBackground;
 	border-radius: @baseBorderRadius;
@@ -29,6 +31,11 @@ About me
 	padding: unit( @baseLineHeight / 2, rem );
 	padding-bottom: unit( @baseLineHeight, rem );
 	min-width: unit( @baseLineHeight * 3, rem );
+}
+@media screen and (min-width: 769px) {
+	.tooltip__elem {
+		display: block;
+	}
 }
 .tooltip:hover .tooltip__elem, .tooltip:focus .tooltip__elem {
 	width: auto;
@@ -46,10 +53,4 @@ About me
 	display: block;
 	text-align: center;
 	font-size: .8rem;
-}
-
-@media all and (max-width: 768px) {
-	.tooltip__elem {
-		display: none;
-	}
 }

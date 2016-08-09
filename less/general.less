@@ -125,27 +125,46 @@ html {
 }
 body {
 	min-height: 100%;
+	max-width: @bodyWidth;
 	margin: auto;
-	width: @bodyWidth;
 	position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
 }
+
 a {
-	text-decoration: underline;
+	display: inline-block;
+	padding: unit( @baseLineHeight / 2, rem );
+	margin: unit( @baseLineHeight / 3, rem ) 0;
+	border: 1px #fff solid;
+	text-decoration: none;
+	vertical-align: middle;
 	color: @baseColor;
 	/*Transitions!!!*/
 	transition: background 0.5s ease-in-out, color 0.5s ease-in-out, outline 0.5s ease-in-out;
 }
+
 a:hover, a:focus {
-	text-decoration: none;
 	color: darken( @linkColor, 10% );
 }
-a:focus {
-	outline: 1px solid @baseColor;
-	outline-offset: 3px;
+
+@media screen and (min-width: 769px) {
+	a {
+		display: inline;
+		padding: 0;
+		margin: 0;
+		text-decoration: underline;
+		border: none;
+	}
+	a:hover, a:focus {
+		text-decoration: none;
+	}
+	a:focus {
+		outline: 1px solid @baseColor;
+		outline-offset: 3px;
+	}
 }
 .button_disabled, .button[disabled] {
 	cursor: not-allowed;
@@ -185,12 +204,23 @@ a:focus {
 	display: table-cell;
 	text-decoration: none;
 	height: @logoHeight;
+	width: @logoWidth;
 	background: url(@logoURL) no-repeat;
 	padding: 0;
-	padding-left: @logoWidth;
+	text-indent: 100%;
+	font: 0/0 a;
+	overflow: hidden;
 	vertical-align: middle;
 	position: relative;
 	border: none;
+}
+@media screen and (min-width: 641px) {
+	.logo__link {
+		width: auto;
+		font: @h1Size/@baseLineHeight @baseFontFamily;
+		text-indent: 0;
+		padding-left: @logoWidth;
+	}
 }
 .logo__hover-text {
 	display: none;
@@ -294,14 +324,20 @@ a:focus {
 }
 .footer {
 	clear: both;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	text-align: center;
 	line-height: @baseLineHeight * 2;
 	padding-left: unit( @baseLineHeight / 2, rem );
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
+}
+
+@media screen and (min-width: 769px) {
+	.footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
 }
 .box__title {
 	color: @pageBackgroundColor;
@@ -350,58 +386,4 @@ Accessibility
 .skip-link {
 	margin-left: @logoWidth;
 	padding-left: unit( @baseLineHeight / 3, rem )
-}
-
-/**********************************************
-Media queries
-**********************************************/
-@media all and (max-width:980px) {
-	body {
-		width: 768px;
-	}
-}
-@media all and (max-width:768px) {
-	body {
-		width: 640px;
-	}
-
-	.header__nav {
-		float: none;
-		text-align: center;
-	}
-
-	a {
-		display: inline-block;
-		padding: unit( @baseLineHeight / 2, rem );
-		margin: unit( @baseLineHeight / 3, rem ) 0;
-		border: 1px #fff solid;
-		text-decoration: none;
-		vertical-align: middle;
-	}
-
-	.footer {
-		position: static;
-	}
-}
-@media all and (max-width:640px) {
-	body {
-		width: 100%;
-	}
-
-	.logo__link {
-		width: @logoWidth;
-		padding-left: 0;
-		text-indent: 100%;
-		font: 0/0 a;
-		overflow: hidden;
-	}
-
-	.header__nav {
-		padding-top: unit( @baseLineHeight / 3, rem );
-	}
-}
-@media all and (max-width: 580px) {
-	.header {
-		overflow: visible;
-	}
 }

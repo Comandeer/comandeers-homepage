@@ -6,11 +6,22 @@ Contact
 /**********************************************
 Contact
 **********************************************/
+.contact:after {
+	content: '';
+	clear: both;
+	display: block;
+}
 .contact__method, .contact__item {
 	display: inline-block;
 	height: unit( @baseLineHeight * 2, rem );
 	line-height: @baseLineHeight;
 	list-style: none;
+	float: left;
+}
+@media screen and (min-width: 581px) {
+	.contact__method, .contact__item {
+		float: none;
+	}
 }
 .contact__item {
 	vertical-align: top;
@@ -33,6 +44,8 @@ Contact
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
+	clear: left;
+	margin-left: 0;
 }
 .contact__method_facebook {
 	background-position: @contactIconsFBPos;
@@ -53,19 +66,4 @@ Contact
 	background-position: @contactIconsMailPos;
 	width: @contactIconsMailWidth;
 	height: @contactIconsMailHeight;
-}
-
-@media all and (max-width: 580px) {
-	.contact__method, .contact__item {
-		float: left;
-	}
-	.contact__method {
-		clear: left;
-		margin-left: 0;
-	}
-	.contact:after {
-		content: '';
-		clear: both;
-		display: block;
-	}
 }
