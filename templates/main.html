@@ -4,6 +4,7 @@
 		<head>
 			<meta charset="UTF-8">
 			<script src="/js/ga.js" async></script>
+			<script src="/js/menu.js" async></script>
 			<link rel="author" href="https://plus.google.com/+TomaszJakut">
 			<link rel="icon" href="/images/tooltips/comandeer.jpg">
 			<link rel="sitemap" href="{URI}sitemap.xml">
@@ -32,9 +33,10 @@
 						<span class="logo__text">Comandeer</span>'s Homepage
 					</a>
 				</h1>
-				<nav class="header__nav nav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-					<h2 class="accessible" itemprop="name">Menu</h2>
-					<ul id="menu" class="nav__menu menu">
+				<a class="header__nav-toggler button" href="#menu">Menu</a>
+				<nav class="header__nav nav" id="menu" itemscope itemtype="https://schema.org/SiteNavigationElement">
+					<h2 class="nav__title" itemprop="name">Menu</h2>
+					<ul class="nav__menu menu">
 						<li class="menu__item"><a href="/o-mnie.html" class="menu__link">O&nbsp;mnie</a></li>
 						<li class="menu__item"><a href="/projekty.html" class="menu__link">Projekty</a></li>
 						<li class="menu__item"><a href="/kontakt.html" class="menu__link">Kontakt</a></li>

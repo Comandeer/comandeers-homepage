@@ -199,44 +199,77 @@ a:focus {
 	display: inline-block;
 }
 .logo__link:hover .logo__text, .logo__link:focus .logo__text {
-	position: absolute;
-	clip: rect( 0, 0, 0, 0 );
-	height: 1px;
-	width: 1px;
-	padding: 0;
-	border: 0;
-	margin: -1px;
+	.accessible;
 }
 .logo__link:hover, .logo__link:focus {
 	background-position: 0 -@logoHeight;
 }
-.header__nav {
+.header__nav-toggler {
 	float: right;
 	font-size: @navFontSize;
-	padding-top: @logoHeight / 2;
-	margin-top: -@navFontSize / 2;
 }
-
+.nav {
+	display: none;
+}
+.header__nav:target, .nav--open {
+	display: block;
+	position: absolute;
+	z-index: 100;
+	top: @logoHeight;
+	left: 0;
+	right: 0;
+	.footer;
+	bottom: auto;
+	border-radius: 0;
+}
 .menu__item {
-	display: inline-block;
-	padding-left: unit( @baseLineHeight, rem );
-	height: unit( @baseLineHeight * 2, rem );
+	display: block;
+	text-align: center;
+	font-size: @h2Size;
+	line-height: @baseLineHeight * 2;
 }
-
-
 .menu__link {
-	padding: unit( @baseLineHeight / 3, rem ) unit( @baseLineHeight / 2, rem );
 	text-decoration: none;
 	text-transform: uppercase;
-	border-radius: @baseBorderRadius * 2;
-	border: none;
-	color: @menuColor;
-	background: @menuBackground;
+	.footer__link;
 }
-
 .menu__link:hover, .menu__link:focus {
-	color: @menuHoverColor;
-	background: @menuHoverBackground;
+	outline-color: @pageBackgroundColor;
+	color: darken( @pageBackgroundColor, 10% );
+}
+@media screen and (min-width: 980px) {
+	.header__nav-toggler, .nav__title {
+		.accessible;
+	}
+
+	.nav {
+		display: block;
+		float: right;
+	}
+
+	.menu {
+		margin: 0;
+	}
+
+	.menu__item {
+		display: inline-block;
+		padding-left: unit( @baseLineHeight, rem );
+		height: unit( @baseLineHeight * 2, rem );
+	}
+
+	.menu__link {
+		color: @menuColor;
+		background: @menuBackground;
+		font-size: 1rem;
+		padding: unit( @baseLineHeight / 3, rem ) unit( @baseLineHeight / 2, rem );
+		border-radius: @baseBorderRadius * 2;
+		border: none;
+	}
+
+	.menu__link:hover, .menu__link:focus {
+		color: @menuHoverColor;
+		background: @menuHoverBackground;
+	}
 }
 .content {
 	clear: both;
