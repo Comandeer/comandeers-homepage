@@ -11,7 +11,11 @@ Projects
 	background: url(/images/custom/hr2.png) no-repeat center bottom;
 	margin-top: unit( @baseLineHeight, rem );
 	padding-bottom: unit( @baseLineHeight, rem );
-	display: table;
+}
+@media screen and (min-width: 980px) {
+	.project {
+		display: table;
+	}
 }
 .project:first-of-type {
 	margin-top: 0;
@@ -27,18 +31,25 @@ Projects
 .project__name {
 	margin-top: 0;
 }
-.project__screenshot, .project__description {
-	display: table-cell;
-	vertical-align: top;
-}
 .project__description {
-	padding-left: 1rem;
+	text-align: center;
 }
-.project__features, .project__action {
-	float: left;
+@media screen and (min-width: 980px) {
+	.project__screenshot, .project__description {
+		display: table-cell;
+		vertical-align: top;
+		width: 50%;
+	}
+	.project__description {
+		padding-left: 1rem;
+		text-align: justify;
+	}
 }
+
 .project__features {
 	margin-left: 0;
+	margin-bottom: unit( @baseLineHeight, rem );
+	display: inline-block;
 }
 .project__description p {
 	font-weight: bold;
@@ -46,7 +57,7 @@ Projects
 }
 .features__feature {
 	list-style: none;
-	background: url(/images/custom/feature.png) no-repeat center left;
+	background: url(@featuresImageURL) no-repeat center left;
 	padding-left: @featuresImageWidth;
 }
 .project__action {
