@@ -241,7 +241,7 @@ a:hover, a:focus {
 .nav {
 	display: none;
 }
-.header__nav:target, .nav--open {
+.header__nav:target, .nav_open {
 	display: block;
 	position: absolute;
 	z-index: 100;
@@ -268,7 +268,10 @@ a:hover, a:focus {
 	color: darken( @pageBackgroundColor, 10% );
 }
 @media screen and (min-width: 980px) {
-	.header__nav-toggler, .nav__title {
+	.header__nav-toggler {
+		display: none;
+	}
+	.nav__title {
 		.accessible;
 	}
 

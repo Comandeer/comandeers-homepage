@@ -3,13 +3,13 @@
 		menu = document.getElementById( id );
 
 	function checkMenuVisibility( menu ) {
-		return menu.classList.contains( 'nav--open' ) || location.hash === '#' + menu.id;
+		return menu.classList.contains( 'nav_open' ) || location.hash === '#' + menu.id;
 	}
 
 	function toggleMenu( menu, toggler ) {
 		var isVisible;
 
-		menu.classList.toggle( 'nav--open' );
+		menu.classList.toggle( 'nav_open' );
 		isVisible = checkMenuVisibility( menu );
 
 		toggler.setAttribute( 'aria-expanded', String( isVisible ) );
