@@ -4,7 +4,7 @@
   "main": "Gruntfile.js",
   "private": true,
   "dependencies": {
-    "cheerio": "^0.20.0",
+    "cheerio": "^0.22.0",
     "glob": "^7.0.3",
     "grunt": "^1.0.1",
     "grunt-autoprefixer": "^3.0.3",
