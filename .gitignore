@@ -7,3 +7,4 @@ hashes/
 *.bac
 /.project
 /payload.json
+npm-debug.log
