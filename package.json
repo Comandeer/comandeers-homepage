@@ -16,7 +16,7 @@
     "grunt-contrib-less": "^1.1.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-csso": "^1.0.0",
+    "grunt-csso": "^2.0.1",
     "grunt-manifest": "^0.4.4",
     "load-grunt-config": "^0.19.2",
     "time-grunt": "^1.2.2"
