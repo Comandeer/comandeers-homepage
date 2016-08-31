@@ -108,8 +108,9 @@ AddOutputFilter DEFLATE js css html
 		Header set Strict-Transport-Security "max-age=15552000" env=HTTPS
 		Header set X-Content-Type-Options "nosniff"
 		Header set X-Frame-Options "SAMEORIGIN"
+		Header set X-XSS-Protection "1; mode=block"
 		Header set Timing-Allow-Origin "*"
-    Header set Content-Security-Policy "{CSP}"
+		Header set Content-Security-Policy "{CSP}"
 
 		# `mod_headers` cannot match based on the content-type, however, this header
 		# should be send only for HTML documents and not for the other resources
@@ -122,6 +123,7 @@ AddOutputFilter DEFLATE js css html
    		</FilesMatch>
 
    		Header unset X-Powered-By
+		Header unset Server
    		Header unset ETag
 
    		{PUSHES}
@@ -163,11 +165,9 @@ Options +FollowSymLinks
   RewriteRule ^o_mnie.html$ /o-mnie.html [R=301,L]
 
   RewriteCond %{HTTP_HOST} ^www\.comandeer\.pl [NC,OR]
-  RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC] 
+  RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
   RewriteRule ^tutorials/(.*)$ http://tutorials.comandeer.pl/$1 [R=301,L]
 
   RewriteCond %{HTTP_HOST} ^www\.comandeer\.pl [NC,OR]
-  RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC] 
+  RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
   RewriteRule ^tutorials$ http://tutorials.comandeer.pl [R=301,L]
-
-
