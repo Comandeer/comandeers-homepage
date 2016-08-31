@@ -18,6 +18,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-csso": "^2.0.1",
     "grunt-manifest": "^0.4.4",
+    "grunt-sri": "0.0.5",
     "load-grunt-config": "^0.19.2",
     "time-grunt": "^1.2.2"
   },
