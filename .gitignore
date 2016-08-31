@@ -6,3 +6,4 @@ hashes/
 .goutputstream-*
 *.bac
 /.project
+/payload.json

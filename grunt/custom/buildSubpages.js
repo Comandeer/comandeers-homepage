@@ -1,45 +1,50 @@
-module.exports = function(grunt)
-{
-	grunt.registerTask('buildSubpages', function()
-	{
-		var config = global.config
-		,fs = require('fs')
-		,crypto = require('crypto')
-		,layout = fs.readFileSync('templates/' + config.layout + '.html', 'utf8')
-		,frontPage = fs.readFileSync('templates/' + config.frontPage + '.html', 'utf8')
-		,subpages = config.subpages
-		,includeJS = function(str)
-		{
-			return str.replace(/{JS:\"(.+?)\"}/g, function(tag, name)
-			{
-				var content = fs.readFileSync('dist/js/' + name + '.js')
-				,hash = crypto.createHash('sha256');
+module.exports = function( grunt ) {
+	grunt.registerTask( 'buildSubpages', function() {
+		var config = global.config,
+		fs = require( 'fs' ),
+		sri = require( `${ process.cwd() }/payload.json` ),
+		crypto = require( 'crypto' ),
+		layout = fs.readFileSync( 'templates/' + config.layout + '.html', 'utf8' ),
+		frontPage = fs.readFileSync( 'templates/' + config.frontPage + '.html', 'utf8' ),
+		subpages = config.subpages,
+		includeJS = function( str ) {
+			return str.replace( /{JS:"(.+?)"}/g, function( tag, name ) {
+				var content = fs.readFileSync( 'dist/js/' + name + '.js' ),
+					hash = crypto.createHash( 'sha256' );
 
-				hash.update(content);
+				hash.update( content );
 
-				fs.writeFileSync('hashes/js/' + name + '.hash', hash.digest('base64'), 'utf8');
+				fs.writeFileSync( 'hashes/js/' + name + '.hash', hash.digest('base64'), 'utf8' );
 
 				return content;
-			});
-		}
-		,replacer = function(template, data, css, self)
-		{
-			var output = layout.replace(/{CONTENT}/g, template);
+			} );
+		},
+		includeSRI = function( str ) {
+			return str.replace( /{SRI:(.+?)}/g, function( tag, name ) {
+				return sri[ `@dist/${ name }` ].integrity;
+			} );
+		},
+		replacer = function( template, data, css, self ) {
+			var output = layout.replace( /{CONTENT}/g, template );
 
-			output = output.replace(/{CSS}/g, css.str);
-			output = output.replace(/{CSSLINK}/g, css.link);
+			output = output.replace( /{CSS}/g, css.str );
+			output = output.replace( /{CSSSRI}/g, sri[ `@dist/${ css.link }` ].integrity );
+			output = output.replace( /{CSSLINK}/g, css.link );
 
-			output = output.replace(/{DESCRIPTION}/g, data.description || config.description);
-			output = output.replace(/{URI}/g, config.uri);
-			output = output.replace(/{MENU}/g, config.menu);
-			output = output.replace(/{SITETITLE}/g, config.title);
-			output = output.replace(/{TITLE}/g, data.title || '');
-			output = output.replace(/{SELF}/g, self ? self + '.html' : '');
-			output = output.replace(/{TITLESEPARATOR}/g, data.title && config.titleSeparator || '');
-			output = output.replace(/{YEAR}/g, new Date().getFullYear());
+			output = output.replace( /{DESCRIPTION}/g, data.description || config.description );
+			output = output.replace( /{URI}/g, config.uri );
+			output = output.replace( /{MENU}/g, config.menu );
+			output = output.replace( /{SITETITLE}/g, config.title );
+			output = output.replace( /{TITLE}/g, data.title || '' );
+			output = output.replace( /{SELF}/g, self ? self + '.html' : '' );
+			output = output.replace( /{TITLESEPARATOR}/g, data.title && config.titleSeparator || '' );
+			output = output.replace( /{YEAR}/g, new Date().getFullYear() );
 
 			//include JS
-			output = includeJS(output);
+			output = includeJS( output );
+
+			output = includeSRI( output );
+
 			return output;
 		};
 		try {

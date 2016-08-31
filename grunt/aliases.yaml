@@ -6,6 +6,7 @@ default:
   - 'autoprefixer:main'
   - 'csso:main'
   - 'copy:main'
+  - 'sri'
   - 'generateMenu'
   - 'generateRobotstxt'
   - 'generateHumanstxt'
