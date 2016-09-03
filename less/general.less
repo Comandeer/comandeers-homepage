@@ -330,7 +330,7 @@ a:hover, a:focus {
 	background-color: @footerBackgroundStatic;
 	background: @footerBackground;
 	clear: both;
-	color: @pageBackgroundColor;
+	color: @boxTextColor;
 	padding: unit( @baseLineHeight / 3, rem );
 }
 .footer {
@@ -351,7 +351,7 @@ a:hover, a:focus {
 	}
 }
 .box__title {
-	color: @pageBackgroundColor;
+	color: @boxTextColor;
 	clear: both;
 	font-size: @h3Size;
 }
@@ -364,14 +364,16 @@ a:hover, a:focus {
 }
 
 .box__link, .footer__link {
-	color: @pageBackgroundColor;
+	color: @boxTextColor;
 }
 .box__link:focus, .footer__link:focus {
 	outline-color: @pageBackgroundColor;
 }
 
 .footer__link:hover, .box__link:hover, .box__link:focus, .footer__link:focus {
-	color: darken( @pageBackgroundColor, 10% );
+	color: @boxTextColor;
+	text-decoration: none;
+	text-decoration: none;
 }
 
 

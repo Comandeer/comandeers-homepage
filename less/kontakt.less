@@ -28,14 +28,15 @@ Contact
 	margin-right: unit( @baseLineHeight / 2, rem );
 }
 .contact__link {
-	color: @pageBackgroundColor;
-	text-decoration: none;
+	color: @boxTextColor;
+	text-decoration: underline;
 	line-height: @baseLineHeight;
 	padding: 0;
 	border: none;
 }
 .contact__link:hover, .contact__link:focus {
-	color: darken( @pageBackgroundColor, 10% );
+	text-decoration: none;
+	color: @boxTextColor;
 	outline-color: @pageBackgroundColor;
 }
 .contact__method {
