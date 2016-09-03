@@ -169,7 +169,7 @@ a:hover, a:focus {
 .button_disabled, .button[disabled] {
 	cursor: not-allowed;
 }
-.button:focus, .logo__link:focus, .menu__link:focus {
+.button:focus, .logo__link:focus {
 	outline: none;
 }
 .button:hover, .button:focus {
@@ -249,8 +249,12 @@ a:hover, a:focus {
 	left: 0;
 	right: 0;
 	.footer;
+	padding: unit( @baseLineHeight / 3, rem ) 0;
 	bottom: auto;
 	border-radius: 0;
+}
+.nav__menu {
+	margin: 0;
 }
 .menu__item {
 	display: block;
@@ -259,9 +263,11 @@ a:hover, a:focus {
 	line-height: @baseLineHeight * 2;
 }
 .menu__link {
+	display: block;
 	text-decoration: none;
 	text-transform: uppercase;
 	.footer__link;
+	line-height: 2;
 }
 .menu__link:hover, .menu__link:focus {
 	outline-color: @pageBackgroundColor;
