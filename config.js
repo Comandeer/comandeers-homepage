@@ -6,7 +6,7 @@ module.exports = {
 	frontPage: 'index',
 	generateMenu: true,
 	includeFrontInMenu: false,
-	uri: 'https://www.comandeer.pl/',
+	uri: ( process.env.DOMOWA_DEV ? 'http://comandeer.dev/' : 'https://www.comandeer.pl/' ),
 	subpages: {
 		'o-mnie': {
 			title: 'O mnie',
@@ -63,7 +63,7 @@ module.exports = {
 		]
 	},
 	CSP: {
-		header: "upgrade-insecure-requests;default-src 'none'; object-src 'none'; img-src 'self' *.google-analytics.com data:; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self';",
+		header: `${ process.env.DOMOWA_DEV ? '' : 'upgrade-insecure-requests;' }default-src 'none'; object-src 'none'; img-src 'self' *.google-analytics.com data:; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self';`,
 		script: "https://www.google-analytics.com/analytics.js 'strict-dynamic' 'unsafe-inline'",
 		style: ""
 	}
