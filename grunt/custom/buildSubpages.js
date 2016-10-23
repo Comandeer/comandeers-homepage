@@ -9,16 +9,11 @@ module.exports = function( grunt ) {
 		subpages = config.subpages,
 		includeJS = function( str ) {
 			return str.replace( /{JS:"(.+?)"}/g, function( tag, name ) {
-				var content = fs.readFileSync( 'dist/js/' + name + '.js' ),
-					hash = crypto.createHash( 'sha256' );
-
-				hash.update( content );
-
-				fs.writeFileSync( 'hashes/js/' + name + '.hash', hash.digest('base64'), 'utf8' );
+				var content = fs.readFileSync( 'dist/js/' + name + '.js' );
 
 				return content;
 			} );
-		},
+		}
 		includeSRI = function( str ) {
 			return str.replace( /{SRI:(.+?)}/g, function( tag, name ) {
 				return sri[ `@dist/${ name }` ].integrity;

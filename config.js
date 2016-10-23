@@ -58,11 +58,13 @@ module.exports = {
 		always: [
 			'/images/custom/logo2.png',
 			'/js/ga.js',
-			'/js/menu.js'
-		],
-		projekty: [
+			'/js/menu.js',
 			'/js/zoom.js'
 		]
 	},
-	CSP: "default-src 'self'; script-src 'self' *.google-analytics.com; img-src 'self' *.google-analytics.com data:; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self'"
+	CSP: {
+		header: "upgrade-insecure-requests;default-src 'none'; object-src 'none'; img-src 'self' *.google-analytics.com data:; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self';",
+		script: "https://www.google-analytics.com/analytics.js 'strict-dynamic' 'unsafe-inline'",
+		style: ""
+	}
 };

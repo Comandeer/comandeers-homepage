@@ -1,47 +1,62 @@
-module.exports = function(grunt)
-{
-	grunt.registerTask('csp', function()
-	{
-		var done = this.async()
-		,config = global.config
-		,fs = require('fs')
-		,glob = require('glob')
-		,file = fs.readFileSync('apache/.htaccess', 'utf8')
-		,header = 'report-uri /report.php;default-src \'self\';'
-		,generateHeader = function(type, hashes, additional)
-		{
-			var part = type + '-src \'self\'';
+module.exports = function( grunt ) {
+	grunt.registerTask( 'csp', function() {
+		var config = global.config.CSP,
+			url = global.config.uri,
+			fs = require( 'fs' ),
+			glob = require( 'glob' ),
+			payload = require( `${ process.cwd() }/payload.json` ),
+			file = fs.readFileSync( 'apache/.htaccess', 'utf8' ),
+			header = config.header || '',
+			hashes = {};
 
-			hashes && hashes.forEach(function(hash)
-			{
-				part += " 'sha256-" + fs.readFileSync(hash, 'utf8') + "'";
-			});
+		function prepareHashes( payload ) {
+			var types = {
+					script: '.js',
+					style: '.css'
+				},
+				type,
+				hash,
+				res;
 
-			return part + ' ' + (additional && additional.join(' ') || '') + ';';
+			for ( res in payload ) {
+
+				for ( type in types ) {
+					if ( payload[ res ].path.endsWith( types[ type ] ) ) {
+						if ( !hashes[ type ] ) {
+							hashes[ type ] = [];
+						}
+
+						for ( hash in payload[ res ].hashes ) {
+							hashes[ type ].push( `'${ hash }-${ payload[ res ].hashes[ hash ] }'` );
+						}
+
+						hashes[ type ].push( `${ url }${ payload[ res ].path.replace( 'dist/', '' ) }` );
+					}
+				}
+			}
 		}
 
-		if ( config.CSP ) {
-			file = file.replace( /{CSP}/g, config.CSP );
-			fs.writeFileSync('dist/.htaccess', file, 'utf8');
-			return done();
+		function generateHeader( type, hashes ) {
+			var parts = [ `${ type }-src ${ config[ type ] }` ];
+
+			hashes && hashes.forEach( function( hash ) {
+				parts.push( hash );
+			} );
+
+			return `${ parts.join( ' ' ) };`;
 		}
 
-		//css
-		glob('hashes/css/*.hash', function(err, hashes)
-		{
-			header += generateHeader('style', hashes);
+		prepareHashes( payload );
 
-			//js
-			glob('hashes/js/*.hash', function(err, hashes)
-			{
-				header += generateHeader('script', hashes, ['*.google-analytics.com']);
+		Object.keys( config ).forEach( function( type ) {
+			if ( type === 'header' ) {
+				return;
+			}
 
-				file = file.replace(/{CSP}/g, header);
+			header += generateHeader( type, hashes[ type ] );
+		} );
 
-				fs.writeFileSync('dist/.htaccess', file, 'utf8');
-
-				done();
-			});
-		});
+		file = file.replace( /{CSP}/g, header );
+		fs.writeFileSync('dist/.htaccess', file, 'utf8');
 	});
 };
