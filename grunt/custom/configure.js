@@ -11,13 +11,12 @@ module.exports = function(grunt)
 
 		try
 		{
-			fs.mkdirSync('dist');
-			fs.mkdirSync('hashes');
-			fs.mkdirSync('hashes/js');
-			fs.mkdirSync('hashes/css');
+			fs.mkdirSync( 'dist' );
+			fs.mkdirSync( 'dist/css' );
+			fs.mkdirSync( 'dist/js' );
 		}
 		catch(e) {console.log(e)}
-	
+
 		if(manifest)
 		{
 			grunt.config.set('manifest.main.src', manifest.src);

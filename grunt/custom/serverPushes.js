@@ -1,59 +1,67 @@
-module.exports = function(grunt)
-{
-	grunt.registerTask('serverPushes', function()
-	{
-		var fs = require('fs')
-		,file = fs.existsSync( 'dist/.htaccess' ) ? fs.readFileSync('dist/.htaccess', 'utf8'): fs.readFileSync('apache/.htaccess', 'utf8')
-		,config = global.config
-		,pushes = config.serverPushes || {}
-		,pages = Object.keys(config.subpages)
-		,header = 'Header add Link "<{RES}>;rel=preload"'
-		,pH = function(res)
-		{
-			return header.replace(/{RES}/g, res);
-		}
-		,template = `<Files "{FILE}">
-			{RULES}
-		</Files>\n`
-		,templateAlways = `<FilesMatch "\\.html$">
-			{RULES}
-		</FilesMatch>\n`
-		,output = '';
+module.exports = function( grunt ) {
+	grunt.registerTask( 'serverPushes', function() {
+		var fs = require( 'fs' ),
+			file = fs.existsSync( 'dist/.htaccess' ) ? fs.readFileSync( 'dist/.htaccess', 'utf8' ): fs.readFileSync( 'apache/.htaccess', 'utf8' ),
+			config = global.config,
+			timestamp = config.timestamp,
+			pushes = config.serverPushes || {},
+			pages = Object.keys( config.subpages ),
+			header = 'Header add Link "<{RES}>;rel=preload"',
+			template = `<Files "{FILE}">
+				{RULES}
+			</Files>\n`,
+			templateAlways = `<FilesMatch "\\.html$">
+				{RULES}
+			</FilesMatch>\n`,
+			alwaysRules = [],
+			output = '';
 
-		if(pushes.always)
-		{
-			var alwaysRules = [];
+		function prepareHeader( res ) {
+			res = addTimeStamp( res );
 
-			pushes.always.forEach(function(push)
-			{
-				alwaysRules.push(pH(push));
-			});
-
-			output += templateAlways.replace(/{RULES}/g, alwaysRules.join('\n'));
+			return header.replace( /{RES}/g, res );
 		}
 
-		pages.push('index');
+		function addTimeStamp( res ) {
+			var res = res.split( '.' );
 
-		pages.forEach(function(page)
-		{
-			var pageTemplate = template.replace(/{FILE}/g, page + '.html')
-			,rules = [];
+			if ( [ 'css', 'js' ].indexOf( res[ res.length - 1 ] ) !== -1 && res[ res.length - 2 ] !== String( timestamp )) {
+				res.splice( res.length - 1, 0, timestamp );
+			}
+
+			return res.join( '.' );
+		}
+
+		if ( pushes.always ) {
+			pushes.always.forEach( function( push ) {
+				alwaysRules.push( prepareHeader( push ) );
+			} );
+
+			output += templateAlways.replace( /{RULES}/g, alwaysRules.join( '\n' ) );
+		}
+
+		pages.push( 'index' );
+
+		pages.forEach( function( page ) {
+			var pageTemplate = template.replace( /{FILE}/g, `${ page }.html` ),
+				rules = [];
 
 			//CSS
-			if(fs.existsSync('dist/css/' + page + '.css'))
-				rules.push(pH('/css/' + page + '.css'));
-			else
-				rules.push(pH('/css/main.css'));
+			if ( fs.existsSync( `dist/css/${ page }.${ timestamp }.css` ) ) {
+				rules.push( prepareHeader( `/css/${ page }.${ timestamp }.css` ) );
+			} else {
+				rules.push( prepareHeader( `/css/main.${ timestamp }.css` ) );
+			}
 
-			if(pushes[page])
-				pushes[page].forEach(function(push)
-				{
-					rules.push(pH(push));
-				});
+			if ( pushes[ page ] ) {
+				pushes[ page ].forEach( function( push ) {
+					rules.push( prepareHeader( push ) );
+				} );
+			}
 
-			output += pageTemplate.replace(/{RULES}/g, rules.join('\n'));
-		});
+			output += pageTemplate.replace( /{RULES}/g, rules.join( '\n' ) );
+		} );
 
-		fs.writeFileSync('dist/.htaccess', file.replace(/{PUSHES}/g, output), 'utf8');
-	});
+		fs.writeFileSync( 'dist/.htaccess', file.replace( /{PUSHES}/g, output ), 'utf8' );
+	} );
 };

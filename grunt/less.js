@@ -4,10 +4,10 @@ module.exports = {
 			yuicompress: false
 		}
 		,files: {
-			'dist/css/main.css': 'less/main.less'
-			,'dist/css/kontakt.css': 'less/kontakt.less'
-			,'dist/css/projekty.css': 'less/projekty.less'
-			,'dist/css/o-mnie.css': 'less/o-mnie.less'
+			[ `dist/css/main.${ global.config.timestamp }.css` ]: 'less/main.less',
+			[ `dist/css/kontakt.${ global.config.timestamp }.css` ]: 'less/kontakt.less',
+			[ `dist/css/projekty.${ global.config.timestamp }.css` ]: 'less/projekty.less',
+			[ `dist/css/o-mnie.${ global.config.timestamp }.css` ]: 'less/o-mnie.less'
 		}
 	}
 };

@@ -1,11 +1,12 @@
 default:
-#  - 'clean'
+  - 'clean'
   - 'configure'
   - 'uglify:main'
   - 'less:main'
   - 'autoprefixer:main'
   - 'csso:main'
   - 'copy:main'
+  - 'prepareScriptLoader'
   - 'sri'
   - 'generateMenu'
   - 'generateRobotstxt'

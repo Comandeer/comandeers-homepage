@@ -1,4 +1,5 @@
 module.exports = {
+	timestamp: Date.now(),
 	title: 'Comandeer\'s Homepage',
 	description: 'Comandeerowa domowa, czyli Comandeera miejsce w Sieci – ciasne, ale (chyba) własne.',
 	titleSeparator: ' @ ',
@@ -57,7 +58,6 @@ module.exports = {
 	serverPushes: {
 		always: [
 			'/images/custom/logo2.png',
-			'/js/ga.js',
 			'/js/menu.js',
 			'/js/zoom.js'
 		]
