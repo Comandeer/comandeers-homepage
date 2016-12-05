@@ -17,7 +17,6 @@ module.exports = function( config, page ) {
 		const current = subpages[ subpage ];
 
 		if ( current.menu ) {
-			console.log( page, subpage );
 			menu.push( `<li class="${ config.menu.itemClass }">
 				<a href="/${ subpage }.html"
 					class="${ config.menu.linkClass }${ page === subpage ? ` ${ config.menu.activeClass }` : '' }">
