@@ -8,7 +8,6 @@ default:
   - 'copy:main'
   - 'prepareScriptLoader'
   - 'sri'
-  - 'generateMenu'
   - 'generateRobotstxt'
   - 'generateHumanstxt'
   - 'generateSitemap'

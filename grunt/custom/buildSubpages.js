@@ -1,62 +1,67 @@
 module.exports = function( grunt ) {
 	grunt.registerTask( 'buildSubpages', function() {
-		var config = global.config,
-			timestamp = config.timestamp,
-			fs = require( 'fs' ),
-			sri = require( `${ process.cwd() }/payload.json` ),
-			mainCSS = `css/main.${ timestamp }.css`,
-			layout = fs.readFileSync( `templates/${ config.layout }.html`, 'utf8' ),
-			frontPage = fs.readFileSync( `templates/${ config.frontPage }.html`, 'utf8' ),
-			subpages = config.subpages,
-			includeJS = function( str ) {
-				return str.replace( /{JS:"(.+?)"}/g, function( tag, name ) {
-					var content = fs.readFileSync( `dist/js/${ name }.${ timestamp }.js` );
+		const config = global.config;
+		const timestamp = config.timestamp;
+		const fs = require( 'fs' );
+		const sri = require( `${ process.cwd() }/payload.json` );
+		const generateMenu = require( './generateMenu' );
+		const mainCSS = `css/main.${ timestamp }.css`;
+		const layout = fs.readFileSync( `templates/${ config.layout }.html`, 'utf8' );
+		const frontPage = fs.readFileSync( `templates/${ config.frontPage }.html`, 'utf8' );
+		const subpages = config.subpages;
 
-					return content;
-				} );
-			}
-			includeSRI = function( str ) {
-				return str.replace( /{SRI:(.+?)}/g, function( tag, name ) {
-					name = name.split( '.' );
+		function includeJS( str ) {
+			return str.replace( /{JS:"(.+?)"}/g, function( tag, name ) {
+				const content = fs.readFileSync( `dist/js/${ name }.${ timestamp }.js` );
 
-					name.splice( name.length - 1, 0, timestamp );
+				return content;
+			} );
+		}
 
-					return sri[ `@dist/${ name.join( '.' ) }` ].integrity;
-				} );
-			},
-			replacer = function( template, data, css, self ) {
-				var output = layout.replace( /{CONTENT}/g, template );
+		function includeSRI( str ) {
+			return str.replace( /{SRI:(.+?)}/g, function( tag, name ) {
+				name = name.split( '.' );
 
-				output = output.replace( /{CSS}/g, css.str );
-				output = output.replace( /{CSSSRI}/g, sri[ `@dist/${ css.link }` ].integrity );
-				output = output.replace( /{CSSLINK}/g, css.link );
+				name.splice( name.length - 1, 0, timestamp );
 
-				output = output.replace( /{DESCRIPTION}/g, data.description || config.description );
-				output = output.replace( /{URI}/g, config.uri );
-				output = output.replace( /{MENU}/g, config.menu );
-				output = output.replace( /{SITETITLE}/g, config.title );
-				output = output.replace( /{TITLE}/g, data.title || '' );
-				output = output.replace( /{SELF}/g, self ? self + '.html' : '' );
-				output = output.replace( /{TITLESEPARATOR}/g, data.title && config.titleSeparator || '' );
-				output = output.replace( /{YEAR}/g, new Date().getFullYear() );
+				return sri[ `@dist/${ name.join( '.' ) }` ].integrity;
+			} );
+		}
 
-				//include JS
-				output = includeJS( output );
+		function replacer( template, data, css, self ) {
+			const menu = generateMenu( config, self );
+			let output = layout.replace( /{CONTENT}/g, template );
 
-				output = includeSRI( output );
+			output = output.replace( /{CSS}/g, css.str );
+			output = output.replace( /{CSSSRI}/g, sri[ `@dist/${ css.link }` ].integrity );
+			output = output.replace( /{CSSLINK}/g, css.link );
 
-				return output;
-			};
+			output = output.replace( /{DESCRIPTION}/g, data.description || config.description );
+			output = output.replace( /{URI}/g, config.uri );
+			output = output.replace( /{MENU}/g, menu );
+			output = output.replace( /{SITETITLE}/g, config.title );
+			output = output.replace( /{TITLE}/g, data.title || '' );
+			output = output.replace( /{SELF}/g, self ? self + '.html' : '' );
+			output = output.replace( /{TITLESEPARATOR}/g, data.title && config.titleSeparator || '' );
+			output = output.replace( /{YEAR}/g, new Date().getFullYear() );
+
+			//include JS
+			output = includeJS( output );
+
+			output = includeSRI( output );
+
+			return output;
+		}
 
 		Object.keys( subpages ).forEach( function( subpage ) {
-			var content = fs.readFileSync( `templates/${ subpage }.html`, 'utf8' ),
-				CSSName = `css/${ subpage }.${ timestamp }.css`,
-				link = fs.existsSync( `dist/${ CSSName }` ) ? CSSName : mainCSS,
-				str = fs.readFileSync( `dist/${ link }`, 'utf8' ),
-				css = {
-					link: link,
-					str: str
-				};
+			const content = fs.readFileSync( `templates/${ subpage }.html`, 'utf8' );
+			const CSSName = `css/${ subpage }.${ timestamp }.css`;
+			const link = fs.existsSync( `dist/${ CSSName }` ) ? CSSName : mainCSS;
+			const str = fs.readFileSync( `dist/${ link }`, 'utf8' );
+			const css = {
+				link: link,
+				str: str
+			};
 
 			fs.writeFileSync( `dist/${ subpage }.html`, replacer( content, subpages[ subpage ], css, subpage ), 'utf8' );
 		} );
@@ -64,8 +69,8 @@ module.exports = function( grunt ) {
 		fs.writeFileSync( `dist/${ config.frontPage }.html`, replacer( frontPage, {
 		    	decription: config.description
 		    }, {
-			link: mainCSS,
-			str: fs.readFileSync( `dist/${ mainCSS }`, 'utf8' )
-		} ),'utf8' );
+				link: mainCSS,
+				str: fs.readFileSync( `dist/${ mainCSS }`, 'utf8' )
+		} ), 'utf8' );
 	} );
 };

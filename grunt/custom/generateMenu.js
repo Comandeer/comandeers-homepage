@@ -1,29 +1,34 @@
-module.exports = function(grunt)
-{
-	grunt.registerTask('generateMenu', function()
-	{
-		var config = global.config;
+module.exports = function( config, page ) {
+	const subpages = config.subpages;
+	const currentPage = `<span class="${ config.menu.hintClass }">(aktywna strona)</span>`;
+	const menu = [ `<ul class="${ config.menu.mainClass }">` ];
 
-		if(!config.generateMenu)
-			return;
+	if ( typeof config.includeFrontInMenu === 'string' && config.includeFrontInMenu.length > 0 ) {
+		menu.push( `<li class="${ config.menu.itemClass }">
+			<a href="${ config.frontPage }.html"
+				class="${ config.menu.linkClass }${ page === subpage ? ` ${ config.menu.activeClass }` : '' }">
+				${ config.includeFrontInMenu }
+				${ page === '' ? currentPage : '' }
+			</a>
+		</li>` );
+	}
 
-		var subpages = config.subpages
-		,menu = [
-			'<ul>'
-		];
+	Object.keys( subpages ).forEach( ( subpage ) => {
+		const current = subpages[ subpage ];
 
-		if(typeof config.includeFrontInMenu === 'string' && config.includeFrontInMenu.length > 0)
-			menu.push('<li><a href="' + config.frontPage + '.html">' + config.includeFrontInMenu + '</a></li>');
+		if ( current.menu ) {
+			console.log( page, subpage );
+			menu.push( `<li class="${ config.menu.itemClass }">
+				<a href="/${ subpage }.html"
+					class="${ config.menu.linkClass }${ page === subpage ? ` ${ config.menu.activeClass }` : '' }">
+					${ current.menu }
+					${ page === subpage ? currentPage : '' }
+				</a>
+			</li>` );
+		}
+	} );
 
-		Object.keys(subpages).forEach(function(t)
-		{
-			var current = subpages[t];
-			if(current.menu)
-				menu.push('<li><a href="' + t + '.html">' + (current.menu) + '</a></li>');
-		});
+	menu.push( '</ul>' );
 
-		menu.push('</ul>');
-		
-		config.menu = menu.join('\n');
-	});
+	return menu.join( '\n' );
 };

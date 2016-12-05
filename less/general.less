@@ -273,6 +273,10 @@ a:hover, a:focus {
 	outline-color: @pageBackgroundColor;
 	color: darken( @pageBackgroundColor, 10% );
 }
+.menu__link_active::before {
+	content: '→ ';
+	speak: none;
+}
 @media screen and (min-width: 980px) {
 	.header__nav-toggler {
 		display: none;
@@ -304,6 +308,14 @@ a:hover, a:focus {
 		padding: unit( @baseLineHeight / 3, rem ) unit( @baseLineHeight / 2, rem );
 		border-radius: @baseBorderRadius * 2;
 		border: none;
+	}
+
+	.menu__link_active {
+		border: 2px @menuHoverBackground solid;
+	}
+
+	.menu__link_active::before {
+		display: none;
 	}
 
 	.menu__link:hover, .menu__link:focus {
