@@ -27,5 +27,13 @@
   "license": "MIT",
   "scripts": {
     "build": "grunt dist"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^1.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
