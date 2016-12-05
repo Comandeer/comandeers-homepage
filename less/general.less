@@ -229,7 +229,7 @@ a:hover, a:focus {
 	display: inline-block;
 }
 .logo__link:hover .logo__text, .logo__link:focus .logo__text {
-	.accessible;
+	.sr-only;
 }
 .logo__link:hover, .logo__link:focus {
 	background-position: 0 -@logoHeight;
@@ -282,7 +282,7 @@ a:hover, a:focus {
 		display: none;
 	}
 	.nav__title {
-		.accessible;
+		.sr-only;
 	}
 
 	.nav {
@@ -392,7 +392,7 @@ a:hover, a:focus {
 /**********************************************
 Accessibility
 **********************************************/
-.accessible {
+.sr-only {
 	position: absolute;
 	clip: rect(0,0,0,0);
 	height: 1px;
@@ -400,12 +400,14 @@ Accessibility
 	padding: 0;
 	border: 0;
 	margin: -1px;
+	word-wrap: no-wrap;
 }
-.accessible:focus {
+.sr-only:focus {
 	clip: auto;
 	z-index: 10;
 	width: auto;
 	height: auto;
+	word-wrap: inherit;
 }
 
 .skip-link {

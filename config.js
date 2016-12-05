@@ -13,7 +13,7 @@ module.exports = {
 		itemClass: 'menu__item',
 		linkClass: 'menu__link',
 		activeClass: 'menu__link_active',
-		hintClass: 'accessible',
+		hintClass: 'sr-only',
 	},
 	subpages: {
 		'o-mnie': {
