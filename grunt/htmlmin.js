@@ -2,8 +2,10 @@ module.exports = {
 	dist: {
 		options: {
 			removeComments: true,
-			collapseWhitespace: true
+			collapseWhitespace: true,
+			processConditionalComments: true
 		},
+
 		files: {
 			'dist/index.html': 'dist/index.html',
 			'dist/o-mnie.html': 'dist/o-mnie.html',

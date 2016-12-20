@@ -1,20 +1,22 @@
 module.exports = function( grunt ) {
-	grunt.registerTask( 'serverPushes', function() {
-		var fs = require( 'fs' ),
-			file = fs.existsSync( 'dist/.htaccess' ) ? fs.readFileSync( 'dist/.htaccess', 'utf8' ): fs.readFileSync( 'apache/.htaccess', 'utf8' ),
-			config = global.config,
-			timestamp = config.timestamp,
-			pushes = config.serverPushes || {},
-			pages = Object.keys( config.subpages ),
-			header = 'Header add Link "<{RES}>;rel=preload"',
-			template = `<Files "{FILE}">
-				{RULES}
-			</Files>\n`,
-			templateAlways = `<FilesMatch "\\.html$">
-				{RULES}
-			</FilesMatch>\n`,
-			alwaysRules = [],
-			output = '';
+	'use strict';
+
+	grunt.registerTask( 'serverPushes', () => {
+		const fs = require( 'fs' )
+		const file = fs.readFileSync( fs.existsSync( 'dist/.htaccess' ) ? 'dist/.htaccess' : 'apache/.htaccess', 'utf8' );
+		const config = global.config;
+		const timestamp = config.timestamp;
+		const pushes = config.serverPushes || {};
+		const pages = Object.keys( config.subpages );
+		const header = 'Header add Link "<{RES}>;rel=preload"';
+		const template = `<Files "{FILE}">
+			{RULES}
+		</Files>\n`;
+		const templateAlways = `<FilesMatch "\\.html$">
+			{RULES}
+		</FilesMatch>\n`;
+		const alwaysRules = []
+		let output = '';
 
 		function prepareHeader( res ) {
 			res = addTimeStamp( res );
@@ -25,7 +27,7 @@ module.exports = function( grunt ) {
 		function addTimeStamp( res ) {
 			var res = res.split( '.' );
 
-			if ( [ 'css', 'js' ].indexOf( res[ res.length - 1 ] ) !== -1 && res[ res.length - 2 ] !== String( timestamp )) {
+			if ( [ 'css', 'js' ].indexOf( res[ res.length - 1 ] ) !== -1 && res[ res.length - 2 ] !== String( timestamp ) ) {
 				res.splice( res.length - 1, 0, timestamp );
 			}
 
@@ -33,7 +35,7 @@ module.exports = function( grunt ) {
 		}
 
 		if ( pushes.always ) {
-			pushes.always.forEach( function( push ) {
+			pushes.always.forEach( ( push ) => {
 				alwaysRules.push( prepareHeader( push ) );
 			} );
 
@@ -42,9 +44,9 @@ module.exports = function( grunt ) {
 
 		pages.push( 'index' );
 
-		pages.forEach( function( page ) {
-			var pageTemplate = template.replace( /{FILE}/g, `${ page }.html` ),
-				rules = [];
+		pages.forEach( ( page ) => {
+			const pageTemplate = template.replace( /{FILE}/g, `${ page }.html` );
+			const rules = [];
 
 			//CSS
 			if ( fs.existsSync( `dist/css/${ page }.${ timestamp }.css` ) ) {
@@ -54,7 +56,7 @@ module.exports = function( grunt ) {
 			}
 
 			if ( pushes[ page ] ) {
-				pushes[ page ].forEach( function( push ) {
+				pushes[ page ].forEach( ( push ) => {
 					rules.push( prepareHeader( push ) );
 				} );
 			}

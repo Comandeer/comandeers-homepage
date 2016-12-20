@@ -6,27 +6,27 @@ ErrorDocument 403 /403.html
 AddType text/cache-manifest .appcache
 AddType application/font-woff2 .woff2
 AddType application/font-woff .woff
-AddType application/javascript  .js
+AddType application/javascript .js
 
 AddDefaultCharset utf-8
 
 <IfModule mod_mime.c>
-    AddCharset utf-8 .atom \
-                     .bbaw \
-                     .css \
-                     .geojson \
-                     .js \
-                     .json \
-                     .jsonld \
-                     .manifest \
-                     .rdf \
-                     .rss \
-                     .topojson \
-                     .vtt \
-                     .webapp \
-                     .webmanifest \
-                     .xloc \
-                     .xml
+	AddCharset utf-8 .atom \
+					 .bbaw \
+					 .css \
+					 .geojson \
+					 .js \
+					 .json \
+					 .jsonld \
+					 .manifest \
+					 .rdf \
+					 .rss \
+					 .topojson \
+					 .vtt \
+					 .webapp \
+					 .webmanifest \
+					 .xloc \
+					 .xml
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -95,7 +95,7 @@ AddDefaultCharset utf-8
 
 
 <IfModule mod_deflate.c>
-AddOutputFilter DEFLATE js css html
+	AddOutputFilter DEFLATE js css html
 </IfModule>
 
 # Force Internet Explorer to render pages in the highest available
@@ -103,32 +103,31 @@ AddOutputFilter DEFLATE js css html
 # https://hsivonen.fi/doctype/#ie8
 
 <IfModule mod_headers.c>
-		Header set X-UA-Compatible "IE=edge"
-		Header set Cache-Control "no-transform"
-		Header set Strict-Transport-Security "max-age=15552000" env=HTTPS
-		Header set X-Content-Type-Options "nosniff"
-		Header set X-Frame-Options "SAMEORIGIN"
-		Header set X-XSS-Protection "1; mode=block"
-		Header set Timing-Allow-Origin "*"
-		Header set Content-Security-Policy "{CSP}"
-    Header set Referrer-Policy "no-referrer"
+	Header set X-UA-Compatible "IE=edge"
+	Header set Cache-Control "no-transform"
+	Header set Strict-Transport-Security "max-age=15552000" env=HTTPS
+	Header set X-Content-Type-Options "nosniff"
+	Header set X-Frame-Options "SAMEORIGIN"
+	Header set X-XSS-Protection "1; mode=block"
+	Header set Timing-Allow-Origin "*"
+	Header set Content-Security-Policy "{CSP}"
+	Header set Referrer-Policy "no-referrer"
 
-		# `mod_headers` cannot match based on the content-type, however, this header
-		# should be send only for HTML documents and not for the other resources
-		<FilesMatch "\.(appcache|atom|crx|css|cur|eot|f4[abpv]|flv|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|tt[cf]|txt|vcf|vtt|webapp|web[mp]|woff|xml|xpi)$">
-				Header unset X-UA-Compatible
-		</FilesMatch>
+	# `mod_headers` cannot match based on the content-type, however, this header
+	# should be send only for HTML documents and not for the other resources
+	<FilesMatch "\.(appcache|atom|crx|css|cur|eot|f4[abpv]|flv|gif|htc|ico|jpe?g|js|json(ld)?|m4[av]|manifest|map|mp4|oex|og[agv]|opus|otf|pdf|png|rdf|rss|safariextz|svgz?|swf|tt[cf]|txt|vcf|vtt|webapp|web[mp]|woff|xml|xpi)$">
+		Header unset X-UA-Compatible
+	</FilesMatch>
 
-		<FilesMatch "\.(html|eot|otf|tt[cf]|woff2?)$">
-        	Header set Access-Control-Allow-Origin "*"
-   		</FilesMatch>
+	<FilesMatch "\.(html|eot|otf|tt[cf]|woff2?)$">
+		Header set Access-Control-Allow-Origin "*"
+	</FilesMatch>
 
-   		Header unset X-Powered-By
-		Header unset Server
-   		Header unset ETag
+	Header unset X-Powered-By
+	Header unset Server
+	Header unset ETag
 
-   		{PUSHES}
-
+	{PUSHES}
 </IfModule>
 
 FileETag None
@@ -136,39 +135,39 @@ ServerSignature Off
 
 Options +FollowSymLinks
 
-  RewriteEngine on
+RewriteEngine on
 
-  RewriteBase /
+RewriteBase /
 
-   RewriteCond %{HTTP_HOST} !^$
-   RewriteCond %{HTTP_HOST} ^(www\.)?comandeer\.pl [NC]
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^$ https://www.comandeer.pl/ [R=301,L]
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} ^(www\.)?comandeer\.pl [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^$ https://www.comandeer.pl/ [R=301,L]
 
-    RewriteCond %{HTTP_HOST} !^$
-   RewriteCond %{HTTP_HOST} ^(www\.)?comandeer\.pl [NC]
-    RewriteCond %{HTTPS} !=on
-    RewriteRule ^(.+)$ https://www.comandeer.pl/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} ^(www\.)?comandeer\.pl [NC]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.+)$ https://www.comandeer.pl/$1 [R=301,L]
 
-     RewriteCond %{HTTP_HOST} !^$
-   RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
-  RewriteCond %{HTTPS} =on
-  RewriteRule ^$ https://www.comandeer.pl/ [R=301,L]
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
+RewriteCond %{HTTPS} =on
+RewriteRule ^$ https://www.comandeer.pl/ [R=301,L]
 
-  RewriteCond %{HTTP_HOST} !^$
-   RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
-  RewriteCond %{HTTPS} =on
-  RewriteRule ^(.+)$ https://www.comandeer.pl/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
+RewriteCond %{HTTPS} =on
+RewriteRule ^(.+)$ https://www.comandeer.pl/$1 [R=301,L]
 
-	RewriteCond %{THE_REQUEST} ^.*/index\.(php|html|htm)
-	RewriteRule ^(.*)index.(php|html|htm)$ /$1 [R=301,L]
+RewriteCond %{THE_REQUEST} ^.*/index\.(php|html|htm)
+RewriteRule ^(.*)index.(php|html|htm)$ /$1 [R=301,L]
 
-  RewriteRule ^o_mnie.html$ /o-mnie.html [R=301,L]
+RewriteRule ^o_mnie.html$ /o-mnie.html [R=301,L]
 
-  RewriteCond %{HTTP_HOST} ^www\.comandeer\.pl [NC,OR]
-  RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
-  RewriteRule ^tutorials/(.*)$ http://tutorials.comandeer.pl/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.comandeer\.pl [NC,OR]
+RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
+RewriteRule ^tutorials/(.*)$ http://tutorials.comandeer.pl/$1 [R=301,L]
 
-  RewriteCond %{HTTP_HOST} ^www\.comandeer\.pl [NC,OR]
-  RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
-  RewriteRule ^tutorials$ http://tutorials.comandeer.pl [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.comandeer\.pl [NC,OR]
+RewriteCond %{HTTP_HOST} ^comandeer\.pl [NC]
+RewriteRule ^tutorials$ http://tutorials.comandeer.pl [R=301,L]

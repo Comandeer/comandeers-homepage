@@ -1,32 +1,30 @@
 module.exports = function( grunt ) {
-	grunt.registerTask( 'csp', function() {
-		var config = global.config.CSP,
-			url = global.config.uri,
-			fs = require( 'fs' ),
-			glob = require( 'glob' ),
-			payload = require( `${ process.cwd() }/payload.json` ),
-			file = fs.readFileSync( 'apache/.htaccess', 'utf8' ),
-			header = config.header || '',
-			hashes = {};
+	'use strict';
+
+	grunt.registerTask( 'csp', () => {
+		const config = global.config.CSP;
+		const url = global.config.uri;
+		const fs = require( 'fs' );
+		const glob = require( 'glob' );
+		const payload = require( `${ process.cwd() }/payload.json` );
+		const hashes = {};
+		let header = config.header || '';
+		let file = fs.readFileSync( 'apache/.htaccess', 'utf8' );
 
 		function prepareHashes( payload ) {
-			var types = {
-					script: '.js',
-					style: '.css'
-				},
-				type,
-				hash,
-				res;
+			const types = {
+				script: '.js',
+				style: '.css'
+			};
 
-			for ( res in payload ) {
-
-				for ( type in types ) {
+			for ( const res in payload ) {
+				for ( const type in types ) {
 					if ( payload[ res ].path.endsWith( types[ type ] ) ) {
 						if ( !hashes[ type ] ) {
 							hashes[ type ] = [];
 						}
 
-						for ( hash in payload[ res ].hashes ) {
+						for ( const hash in payload[ res ].hashes ) {
 							hashes[ type ].push( `'${ hash }-${ payload[ res ].hashes[ hash ] }'` );
 						}
 
@@ -37,7 +35,7 @@ module.exports = function( grunt ) {
 		}
 
 		function generateHeader( type, hashes ) {
-			var parts = [ `${ type }-src ${ config[ type ] }` ];
+			const parts = [ `${ type }-src ${ config[ type ] }` ];
 
 			hashes && hashes.forEach( function( hash ) {
 				parts.push( hash );
@@ -48,7 +46,7 @@ module.exports = function( grunt ) {
 
 		prepareHashes( payload );
 
-		Object.keys( config ).forEach( function( type ) {
+		Object.keys( config ).forEach( ( type ) => {
 			if ( type === 'header' ) {
 				return;
 			}
@@ -57,6 +55,6 @@ module.exports = function( grunt ) {
 		} );
 
 		file = file.replace( /{CSP}/g, header );
-		fs.writeFileSync('dist/.htaccess', file, 'utf8');
-	});
+		fs.writeFileSync( 'dist/.htaccess', file, 'utf8' );
+	} );
 };

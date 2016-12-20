@@ -1,5 +1,7 @@
 module.exports = function( grunt ) {
-	grunt.registerTask( 'buildSubpages', function() {
+	'use strict';
+
+	grunt.registerTask( 'buildSubpages', () => {
 		const config = global.config;
 		const timestamp = config.timestamp;
 		const fs = require( 'fs' );
@@ -11,7 +13,7 @@ module.exports = function( grunt ) {
 		const subpages = config.subpages;
 
 		function includeJS( str ) {
-			return str.replace( /{JS:"(.+?)"}/g, function( tag, name ) {
+			return str.replace( /{JS:"(.+?)"}/g, ( tag, name ) => {
 				const content = fs.readFileSync( `dist/js/${ name }.${ timestamp }.js` );
 
 				return content;
@@ -19,7 +21,7 @@ module.exports = function( grunt ) {
 		}
 
 		function includeSRI( str ) {
-			return str.replace( /{SRI:(.+?)}/g, function( tag, name ) {
+			return str.replace( /{SRI:(.+?)}/g, ( tag, name ) => {
 				name = name.split( '.' );
 
 				name.splice( name.length - 1, 0, timestamp );
@@ -53,7 +55,7 @@ module.exports = function( grunt ) {
 			return output;
 		}
 
-		Object.keys( subpages ).forEach( function( subpage ) {
+		Object.keys( subpages ).forEach( ( subpage ) => {
 			const content = fs.readFileSync( `templates/${ subpage }.html`, 'utf8' );
 			const CSSName = `css/${ subpage }.${ timestamp }.css`;
 			const link = fs.existsSync( `dist/${ CSSName }` ) ? CSSName : mainCSS;

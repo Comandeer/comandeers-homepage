@@ -1,15 +1,15 @@
 module.exports = {
 	main: {
 		files: [
-			'js/**/*'
-			,'less/**/*'
-			,'templates/**/*'
-			,'tutorials/**/*'
-		]
-		,tasks: [
+			'js/**/*',
+			'less/**/*',
+			'templates/**/*',
+			'tutorials/**/*'
+		],
+		tasks: [
 			'default'
-		]
-		,options: {
+		],
+		options: {
 			spawn: false
 		}
 	}
