@@ -111,6 +111,7 @@ AddOutputFilter DEFLATE js css html
 		Header set X-XSS-Protection "1; mode=block"
 		Header set Timing-Allow-Origin "*"
 		Header set Content-Security-Policy "{CSP}"
+    Header set Referrer-Policy "no-referrer"
 
 		# `mod_headers` cannot match based on the content-type, however, this header
 		# should be send only for HTML documents and not for the other resources
