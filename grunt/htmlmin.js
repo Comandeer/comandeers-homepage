@@ -2,7 +2,8 @@ module.exports = {
 	dist: {
 		options: {
 			removeComments: true,
-			collapseWhitespace: true
+			collapseWhitespace: true,
+			processConditionalComments: true
 		},
 
 		files: {
