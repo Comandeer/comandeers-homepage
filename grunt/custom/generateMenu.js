@@ -1,4 +1,6 @@
 module.exports = function( config, page ) {
+	'use strict';
+
 	const subpages = config.subpages;
 	const currentPage = `<span class="${ config.menu.hintClass }">(aktywna strona)</span>`;
 	const menu = [ `<ul class="${ config.menu.mainClass }">` ];

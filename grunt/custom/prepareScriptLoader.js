@@ -1,9 +1,11 @@
 module.exports = function( grunt ) {
-	grunt.registerTask( 'prepareScriptLoader', function() {
-		var fs = require( 'fs' ),
-			timestamp = global.config.timestamp,
-			path = `dist/js/loader.${ timestamp }.js`,
-			file = fs.readFileSync( path, 'utf8' );
+	'use strict';
+
+	grunt.registerTask( 'prepareScriptLoader', () => {
+		const fs = require( 'fs' );
+		const timestamp = global.config.timestamp;
+		const path = `dist/js/loader.${ timestamp }.js`;
+		let file = fs.readFileSync( path, 'utf8' );
 
 		file = file.replace( /{TIMESTAMP}/g, timestamp );
 

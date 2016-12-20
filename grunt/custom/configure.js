@@ -1,42 +1,40 @@
-module.exports = function(grunt)
-{
-	grunt.registerTask('configure', function()
-	{
-		var fs = require( 'fs' )
-		,config = global.config
-		,dist = config.distCSS
-		,manifest = config.manifest
-		,images = config.optimizeImages
-		,files = {};
+module.exports = function( grunt ) {
+	'use strict';
 
-		try
-		{
+	grunt.registerTask( 'configure', () => {
+		const fs = require( 'fs' );
+		const config = global.config;
+		const dist = config.distCSS;
+		const manifest = config.manifest;
+		const images = config.optimizeImages;
+		const files = {};
+
+		try {
 			fs.mkdirSync( 'dist' );
 			fs.mkdirSync( 'dist/css' );
 			fs.mkdirSync( 'dist/js' );
-		}
-		catch(e) {console.log(e)}
-
-		if(manifest)
-		{
-			grunt.config.set('manifest.main.src', manifest.src);
-			grunt.config.set('manifest.main.dest', 'dist/' + manifest.dest + '.appcache');
+		} catch( e ) {
+			console.log( e );
 		}
 
-		if(Array.isArray(images) && images.length > 0)
-			images.forEach(function(t)
-			{
-				grunt.config.set('imagemin.main.files', grunt.config.get('imagemin.main.files').concat(
-				{
-					expand: true
-					,cwd: 'dist/' + t
-					,src: [
-						'**/*.png'
-						,'**/*.gif'
-						,'**/*.jpg'
-					]
-					,dest: 'dist/' + t
-				}));
-			});
-	});
+		if ( manifest ) {
+			grunt.config.set( 'manifest.main.src', manifest.src );
+			grunt.config.set( 'manifest.main.dest', `dist/${ manifest.dest }.appcache` );
+		}
+
+		if ( Array.isArray( images ) && images.length > 0 ) {
+			images.forEach( ( image ) => {
+				grunt.config.set( 'imagemin.main.files', grunt.config.get( 'imagemin.main.files' ).concat( {
+					expand: true,
+					cwd: `dist/${ image }`,
+					src: [
+						'**/*.png',
+						'**/*.gif',
+						'**/*.jpg'
+					],
+					dest: `dist/${ image }`
+				} ) );
+			} );
+		}
+	} );
 };

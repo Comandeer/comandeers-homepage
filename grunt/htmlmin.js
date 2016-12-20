@@ -4,6 +4,7 @@ module.exports = {
 			removeComments: true,
 			collapseWhitespace: true
 		},
+
 		files: {
 			'dist/index.html': 'dist/index.html',
 			'dist/o-mnie.html': 'dist/o-mnie.html',

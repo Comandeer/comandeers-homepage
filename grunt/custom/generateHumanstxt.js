@@ -1,18 +1,17 @@
-module.exports = function(grunt)
-{
-	grunt.registerTask('generateHumanstxt', function()
-	{
-		var config = global.config
-		,fs = require('fs')
-		,content = [
+module.exports = function( grunt ) {
+	'use strict';
+
+	grunt.registerTask( 'generateHumanstxt', () => {
+		const config = global.config;
+		const fs = require( 'fs' );
+		const content = [
 			'/* TEAM */'
 		];
 
-		config.humans.forEach(function(t)
-		{
-			content.push(t.title + ': ' + t.name + '\nSite: ' + t.site);
-		});
+		config.humans.forEach( ( human ) => {
+			content.push( `${ human.title }: ${ human.name }\nSite: ${ human.site }` );
+		} );
 
-		fs.writeFileSync('dist/humans.txt', content.join('\n'), 'utf8');
-	});
+		fs.writeFileSync( 'dist/humans.txt', content.join( '\n' ), 'utf8' );
+	} );
 };

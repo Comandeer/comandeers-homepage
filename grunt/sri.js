@@ -4,6 +4,5 @@ module.exports = {
 			'dist/css/**/*.css',
 			'dist/js/**/*.js'
 		]
-
 	}
 }

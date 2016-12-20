@@ -1,6 +1,7 @@
-module.exports = function(grunt)
-{
-	String.prototype.repeat=function(count) 
+module.exports = function( grunt ) {
+	'use strict';
+
+	/*String.prototype.repeat=function(count)
 	{
 		if(count<1)
 			return '';
@@ -14,14 +15,14 @@ module.exports = function(grunt)
 			,pattern+=pattern;
 		}
 		return result;
-	};
+	};*/
 
-	global.config = require('./config');
+	global.config = require( './config' );
 
-	require('time-grunt')(grunt);
-	require('load-grunt-config')(grunt, {
+	require( 'time-grunt' )( grunt );
+	require( 'load-grunt-config' )( grunt, {
 		jitGrunt: {
 			customTasksDir: './grunt/custom'
 		}
-	});
+	} );
 };
