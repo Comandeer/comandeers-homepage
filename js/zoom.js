@@ -31,6 +31,8 @@
 				overlay.setAttribute( 'aria-hidden', true );
 				overlay.classList.remove( 'zoomer_visible' );
 
+				notification.innerHTML = '';
+
 				document.removeEventListener( 'click', close, false );
 				document.removeEventListener( 'keydown', escHandler, false );
 			};
@@ -38,7 +40,7 @@
 		img.classList.add( 'zoomer__image' );
 		img.alt = '';
 
-		notification.classList.add( 'accessible' );
+		notification.classList.add( 'sr-only' );
 		notification.setAttribute( 'aria-live', 'assertive' );
 
 		overlay.classList.add( 'zoomer' );
