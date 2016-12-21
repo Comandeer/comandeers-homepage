@@ -4,7 +4,7 @@
 		var overlay = document.createElement( 'div' ),
 			notification = document.createElement( 'span' ),
 			img = document.createElement( 'img' ),
-			open = function( src, alt ) {
+			open = function( src, alt, element ) {
 				img.src = src;
 				img.alt = alt;
 
@@ -12,6 +12,8 @@
 				overlay.classList.add( 'zoomer_visible' );
 
 				notification.innerHTML = 'Otworzono powiększenie screenshota. Naciśnij <kbd>Esc</kbd>, aby zamknąć.';
+
+				previouslyFocused = element;
 
 				document.addEventListener( 'click', close, false );
 				document.addEventListener( 'keydown', escHandler, false );
@@ -33,9 +35,13 @@
 
 				notification.innerHTML = '';
 
+				previouslyFocused.focus();
+				previouslyFocused = null;
+
 				document.removeEventListener( 'click', close, false );
 				document.removeEventListener( 'keydown', escHandler, false );
-			};
+			},
+			previouslyFocused;
 
 		img.classList.add( 'zoomer__image' );
 		img.alt = '';
@@ -57,7 +63,7 @@
 				evt.preventDefault();
 				evt.stopPropagation();
 
-				open( this.href, this.parentNode.parentNode.getElementsByClassName( 'project__name' )[ 0 ].textContent + ' – screenshoot' );
+				open( this.href, this.parentNode.parentNode.getElementsByClassName( 'project__name' )[ 0 ].textContent + ' – screenshoot', this );
 			}, false );
 	}
 } () );
