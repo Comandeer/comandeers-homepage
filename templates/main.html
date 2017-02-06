@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Tak, HTML 5. A czemu by nie? >prowokacja< -->
-	<html lang="pl" dir="ltr" itemscope itemtype="https://schema.org/WebPage">
+	<html lang="pl" dir="ltr" vocab="http://schema.org" typeof="WebPage">
 		<head>
 			<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,9 +8,9 @@
 			<link rel="author" href="https://plus.google.com/+TomaszJakut">
 			<link rel="icon" href="/images/custom/comandeer.jpg">
 			<link rel="sitemap" href="{URI}sitemap.xml">
-			<meta itemprop="image" content="{URI}images/custom/comandeer.jpg">
+			<meta property="image" content="{URI}images/custom/comandeer.jpg">
 			<meta name="author" content="Comandeer">
-			<meta itemprop="description" content="{DESCRIPTION}">
+			<meta property="description" content="{DESCRIPTION}">
 			<!--Facebook shit...-->
 			<meta property="og:site_name" content="Comandeer's Homepage">
 			<meta property="og:url" content="{URI}{SELF}">
@@ -20,7 +20,7 @@
 			<meta property="og:image:width" content="200">
 			<meta property="og:image:height" content="200">
 			<!--end of shit-->
-			<title itemprop="name">{TITLE}{TITLESEPARATOR}Comandeer's Homepage</title>
+			<title property="name">{TITLE}{TITLESEPARATOR}Comandeer's Homepage</title>
 			<!--[if lt IE 9]>
 				<script src="/js/html5.js"></script>
 			<![endif]-->
@@ -28,7 +28,7 @@
 		</head>
 		<body>
 			<a href="#tresc" class="sr-only skip-link">Przewiń do&nbsp;treści&nbsp;<span aria-hidden="true">⇩</span></a>
-			<header id="naglowek" class="header" itemscope itemtype="http://schema.org/WPHeader">
+			<header id="naglowek" class="header" typeof="WPHeader">
 				<h1 class="header__logo logo">
 					<a href="/" class="logo__link" title="Skocz na główną" lang="en" hreflang="pl">
 						<span class="logo__hover-text" aria-hidden="true">[0/\/\ΛΠ|)1®</span>
@@ -36,15 +36,15 @@
 					</a>
 				</h1>
 				<a class="header__nav-toggler button" href="#menu">Menu</a>
-				<nav class="header__nav nav" id="menu" itemscope itemtype="https://schema.org/SiteNavigationElement">
-					<h2 class="nav__title" itemprop="name">Menu</h2>
+				<nav class="header__nav nav" id="menu" typeof="SiteNavigationElement">
+					<h2 class="nav__title" property="name">Menu</h2>
 					{MENU}
 				</nav>
 			</header>
-			<main id="tresc" class="content" itemprop="mainContentOfPage" itemscope itemtype="https://schema.org/WebPageElement" tabindex="-1">
+			<main id="tresc" class="content" property="mainContentOfPage" typeof="WebPageElement" tabindex="-1">
 				{CONTENT}
 			</main>
-			<footer id="stopka" class="footer" itemscope itemtype="https://schema.org/WPFooter">
+			<footer id="stopka" class="footer" typeof="WPFooter">
 				Copyright © <a href="{URI}" rel="author" class="footer__link">Comandeer</a>. Oryginalny szablon by&nbsp;<a href="http://damek.eu/creativebarons-darmowy-szablon-html" class="footer__link" rel="noopener noreferrer">Damek</a>. Ta&nbsp;strona <a href="/cookies.html" class="footer__link">korzysta z&nbsp;cookies</a>.
 			</footer>
 		</body>
