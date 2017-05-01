@@ -120,6 +120,9 @@ address {
 /**********************************************
 General ones
 **********************************************/
+:focus {
+	outline: 2px #ff0 dashed;
+}
 html {
 	box-sizing: border-box;
 	background: @pageBackground;
@@ -154,7 +157,7 @@ a {
 	vertical-align: middle;
 	color: @baseColor;
 	/*Transitions!!!*/
-	transition: background 0.5s ease-in-out, color 0.5s ease-in-out, outline 0.5s ease-in-out;
+	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 a:hover, a:focus {
@@ -172,16 +175,9 @@ a:hover, a:focus {
 	a:hover, a:focus {
 		text-decoration: none;
 	}
-	a:focus {
-		outline: 1px solid @baseColor;
-		outline-offset: 3px;
-	}
 }
 .button_disabled, .button[disabled] {
 	cursor: not-allowed;
-}
-.button:focus, .logo__link:focus {
-	outline: none;
 }
 .button:hover, .button:focus {
 	background-color: @buttonHoverBackgroundStatic;
@@ -275,10 +271,6 @@ a:hover, a:focus {
 	.footer__link;
 	line-height: 2;
 }
-.menu__link:hover, .menu__link:focus {
-	outline-color: @pageBackgroundColor;
-	color: darken( @pageBackgroundColor, 10% );
-}
 .menu__link_active::before {
 	content: '→ ';
 	speak: none;
@@ -326,7 +318,6 @@ a:hover, a:focus {
 	.menu__link:hover, .menu__link:focus {
 		color: @menuHoverColor;
 		background: @menuHoverBackground;
-		outline: none;
 	}
 }
 .content {
@@ -350,6 +341,10 @@ a:hover, a:focus {
 	border-radius: 0;
 }
 
+.footer :focus {
+	outline-color: #000;
+}
+
 .footer__link{
 	padding: 0;
 	border: none;
@@ -361,13 +356,8 @@ a:hover, a:focus {
 	color: @boxTextColor;
 }
 
-.footer__link:focus {
-	outline-color: @pageBackgroundColor;
-}
-
 .footer__link:hover, .footer__link:focus {
 	color: @boxTextColor;
-	text-decoration: none;
 	text-decoration: none;
 }
 
@@ -394,8 +384,16 @@ Accessibility
 }
 
 .skip-link {
-	margin-left: @logoWidth;
-	padding-left: unit( @baseLineHeight / 3, rem )
+	top: 0;
+	left: 0;
+	background: #fff;
+	color: #000;
+	font-size: 2rem;
+	line-height: 2rem;
+	padding: 0 1rem;
+}
+.skip-link:hover, .skip-link:focus {
+	color: #000;
 }
 /**********************************************
 Lightbox :D
