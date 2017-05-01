@@ -6,6 +6,9 @@ Variables import
 CSS Reset
 Yes, Eric Meyer's one
 **********************************************/
+*, *::before, *::after {
+	box-sizing: inherit;
+}
 html, body, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address, em, img, small, strong, dd, dl, dt, li, ol, ul {
 	margin: 0;
 	padding: 0;
@@ -67,6 +70,7 @@ h6 {
 }
 abbr {
 	cursor: help;
+	text-decoration: none;
 	border-bottom: @abbrBottom;
 }
 a abbr {
@@ -117,17 +121,24 @@ address {
 General ones
 **********************************************/
 html {
+	box-sizing: border-box;
 	background: @pageBackground;
 	font-family: @baseFontFamily;
 	font-weight: normal;
 	color: @baseColor;
-	height: 100%;
 }
 body {
-	min-height: 100%;
-	max-width: @bodyWidth;
-	margin: auto;
-	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-content: space-between;
+}
+
+@media screen and (min-width: 1024px) {
+	body {
+		max-width: @bodyWidth;
+		margin: 0 auto;
+	}
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -195,14 +206,16 @@ a:hover, a:focus {
 }
 .header {
 	height: @logoHeight;
-	overflow: hidden;
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
 }
 .header__logo {
-	float: left;
 }
 .logo__link {
-	display: table-cell;
+	display: block;
 	text-decoration: none;
+	margin: 0;
 	height: @logoHeight;
 	width: @logoWidth;
 	background: url(@logoURL) no-repeat;
@@ -222,22 +235,14 @@ a:hover, a:focus {
 		padding-left: @logoWidth;
 	}
 }
-.logo__hover-text {
-	display: none;
-}
-.logo__link:hover .logo__hover-text, .logo__link:focus .logo__hover-text {
-	display: inline-block;
-}
-.logo__link:hover .logo__text, .logo__link:focus .logo__text {
+.logo__text {
 	.sr-only;
 }
 .logo__link:hover, .logo__link:focus {
 	background-position: 0 -@logoHeight;
 }
 .header__nav-toggler {
-	float: right;
 	font-size: @navFontSize;
-	height: auto;
 }
 .nav {
 	display: none;
@@ -278,7 +283,7 @@ a:hover, a:focus {
 	content: '→ ';
 	speak: none;
 }
-@media screen and (min-width: 980px) {
+@media screen and (min-width: 600px) {
 	.header__nav-toggler {
 		display: none;
 	}
@@ -288,26 +293,25 @@ a:hover, a:focus {
 
 	.nav {
 		display: block;
-		float: right;
 	}
 
 	.menu {
 		margin: 0;
+		display: inline-flex;
+		justify-content: space-between;
 	}
 
 	.menu__item {
-		display: inline-block;
-		padding-left: unit( @baseLineHeight, rem );
-		height: unit( @baseLineHeight * 2, rem );
+		display: block;
 	}
 
 	.menu__link {
-		display: inline-block;
 		color: @menuColor;
 		background: @menuBackground;
 		font-size: 1rem;
-		padding: unit( @baseLineHeight / 3, rem ) unit( @baseLineHeight / 2, rem );
-		border-radius: @baseBorderRadius * 2;
+		height: @logoHeight;
+		line-height: @logoHeight;
+		padding: 0 unit( @baseLineHeight / 2, rem );
 		border: none;
 	}
 
@@ -326,10 +330,8 @@ a:hover, a:focus {
 	}
 }
 .content {
-	clear: both;
 	min-height: unit( @baseLineHeight * 4, rem );
-	margin-top: unit( @baseLineHeight * 2, rem );
-	padding: 0 unit( @baseLineHeight / 2, rem ) unit( @baseLineHeight * 3, rem ) unit( @baseLineHeight / 2, rem );
+	padding: 0 unit( @baseLineHeight / 2, rem ) unit( @baseLineHeight, rem ) unit( @baseLineHeight / 2, rem );
 	outline: none;
 }
 .article__title {
@@ -338,35 +340,14 @@ a:hover, a:focus {
 	color: @baseColor;
 	text-shadow: @articleTitleShadow;
 }
-.box, .footer {
-	border-radius: @baseBorderRadius;
+.footer {
 	background-color: @footerBackgroundStatic;
 	background: @footerBackground;
-	clear: both;
 	color: @boxTextColor;
 	padding: unit( @baseLineHeight / 3, rem );
-}
-.footer {
-	clear: both;
 	text-align: center;
 	line-height: @baseLineHeight * 2;
-	padding-left: unit( @baseLineHeight / 2, rem );
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
-}
-
-@media screen and (min-width: 769px) {
-	.footer {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-	}
-}
-.box__title {
-	color: @boxTextColor;
-	clear: both;
-	font-size: @h3Size;
+	border-radius: 0;
 }
 
 .footer__link{
@@ -376,14 +357,15 @@ a:hover, a:focus {
 	text-decoration: underline;
 }
 
-.box__link, .footer__link {
+.footer__link {
 	color: @boxTextColor;
 }
-.box__link:focus, .footer__link:focus {
+
+.footer__link:focus {
 	outline-color: @pageBackgroundColor;
 }
 
-.footer__link:hover, .box__link:hover, .box__link:focus, .footer__link:focus {
+.footer__link:hover, .footer__link:focus {
 	color: @boxTextColor;
 	text-decoration: none;
 	text-decoration: none;
@@ -414,4 +396,28 @@ Accessibility
 .skip-link {
 	margin-left: @logoWidth;
 	padding-left: unit( @baseLineHeight / 3, rem )
+}
+/**********************************************
+Lightbox :D
+**********************************************/
+.zoomer {
+	position: fixed;
+	z-index: 900;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0,0,0,.7);
+	display: none;
+	cursor: zoom-out;
+}
+.zoomer_visible {
+	display: block;
+}
+.zoomer__image {
+	display: block;
+	max-width: 90%;
+	max-height: 90%;
+	margin: 0 auto;
+	z-index: 1000;
 }

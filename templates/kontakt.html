@@ -1,18 +1,34 @@
 <article class="article">
-	<h2 class="article__title">Złap mnie!</h2>
-	<div class="box" id="metody">
-		<h3 class="box__title">Gdzie mnie możesz złapać?</h3>
-		<address typeof="ContactPoint">
-			<dl class="contact">
-				<dt class="contact__method contact__method_facebook" title="Facebook">Facebook</dt>
-					<dd class="contact__item"><a href="//facebook.com/Comandeer" property="url" class="contact__link" rel="noopener noreferrer">Comandeer</a></dd>
-				<dt class="contact__method contact__method_skype" title="Skype">Skype</dt>
-					<dd class="contact__item"><a href="callto:comandeerve" property="telephone" class="contact__link">comandeerve</a></dd>
-				<dt class="contact__method contact__method_gg" title="Gadu-Gadu">Gadu-Gadu</dt>
-					<dd class="contact__item"><a href="gg:35296889" property="url" class="contact__link">35296889</a></dd>
-				<dt class="contact__method contact__method_mail" title="E-mail">E-mail</dt>
-					<dd class="contact__item"><a href="mailto:comandeer@comandeer.pl" property="email" class="contact__link">comandeer@comandeer.pl</a></dd>
-			</dl>
-		</address>
-	</div>
+	<h2 class="article__title">Gdzie mnie możesz złapać?</h2>
+	<address id="metody" typeof="ContactPoint">
+		<dl class="contact">
+			<dt class="contact__method contact__method_facebook" title="Facebook">
+				<svg class="contact__icon">
+					<use xlink:href="/images/custom/contact.svg#icon-facebook"></use>
+				</svg>
+				<span class="sr-only">Facebook</span>
+			</dt>
+			<dd class="contact__item">
+				<a href="https//facebook.com/Comandeer" property="url" class="contact__link" rel="noopener noreferrer">Comandeer</a>
+			</dd>
+			<dt class="contact__method contact__method_skype" title="Skype">
+				<svg class="contact__icon">
+					<use xlink:href="/images/custom/contact.svg#icon-skype"></use>
+				</svg>
+				<span class="sr-only">Skype</span>
+			</dt>
+			<dd class="contact__item">
+				<a href="callto:comandeerve" property="telephone" class="contact__link">comandeerve</a>
+			</dd>
+			<dt class="contact__method contact__method_mail" title="E-mail">
+				<svg class="contact__icon">
+					<use xlink:href="/images/custom/contact.svg#icon-mail"></use>
+				</svg>
+				<span class="sr-only">E-mail</span>
+			</dt>
+			<dd class="contact__item">
+				<a href="mailto:comandeer@comandeer.pl" property="email" class="contact__link">comandeer@comandeer.pl</a>
+			</dd>
+		</dl>
+	</address>
 </article>
