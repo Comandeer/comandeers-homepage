@@ -70,7 +70,7 @@ module.exports = {
 		]
 	},
 	CSP: {
-		header: `${ process.env.DOMOWA_DEV ? '' : 'upgrade-insecure-requests;' }default-src 'none'; object-src 'none'; img-src 'self' *.google-analytics.com data:; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self';`,
+		header: `${ process.env.DOMOWA_DEV ? '' : 'upgrade-insecure-requests;' }default-src 'none'; connect-src 'self'; object-src 'none'; img-src 'self' *.google-analytics.com data:; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self';`,
 		script: "https://www.google-analytics.com/analytics.js 'strict-dynamic' 'unsafe-inline'",
 		style: ""
 	}

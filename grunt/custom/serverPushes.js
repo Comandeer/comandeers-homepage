@@ -8,7 +8,8 @@ module.exports = function( grunt ) {
 		const timestamp = config.timestamp;
 		const pushes = config.serverPushes || {};
 		const pages = Object.keys( config.subpages );
-		const header = 'Header add Link "<{RES}>;rel=preload"';
+		const header = `Header add Link "<{RES}>;rel=preload" env=no_secure
+		H2PushResource add "{RES}"`;
 		const template = `<Files "{FILE}">
 			{RULES}
 		</Files>\n`;
