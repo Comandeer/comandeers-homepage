@@ -18,54 +18,30 @@ Contact
 	list-style: none;
 	float: left;
 }
-@media screen and (min-width: 581px) {
-	.contact__method, .contact__item {
-		float: none;
-	}
-}
+
 .contact__item {
-	vertical-align: top;
-	margin-right: unit( @baseLineHeight / 2, rem );
+	vertical-align: middle;
 }
 .contact__link {
-	color: @boxTextColor;
 	text-decoration: underline;
-	line-height: @baseLineHeight;
+	line-height: unit( @baseLineHeight * 2, rem );
 	padding: 0;
 	border: none;
 }
 .contact__link:hover, .contact__link:focus {
 	text-decoration: none;
-	color: @boxTextColor;
 	outline-color: @pageBackgroundColor;
 }
 .contact__method {
-	height: @contactIconsBaseWidth;
-	width: @contactIconsBaseHeight;
-	background: url(@contactIconsSpriteURL);
-	text-indent: 100%;
-	white-space: nowrap;
-	overflow: hidden;
+	height: unit( @baseLineHeight * 2, rem );
+	width: unit( @baseLineHeight * 2, rem );
+	margin-bottom: unit( @baseLineHeight, rem );
 	clear: left;
 	margin-left: 0;
 }
-.contact__method_facebook {
-	background-position: @contactIconsFBPos;
-	width: @contactIconsFBWidth;
-	height: @contactIconsFBHeight;
-}
-.contact__method_skype {
-	background-position: @contactIconsSkypePos;
-	width: @contactIconsSkypeWidth;
-	height: @contactIconsSkypeHeight;
-}
-.contact__method_gg {
-	background-position: @contactIconsGGPos;
-	width: @contactIconsGGWidth;
-	height: @contactIconsGGHeight;
-}
-.contact__method_mail {
-	background-position: @contactIconsMailPos;
-	width: @contactIconsMailWidth;
-	height: @contactIconsMailHeight;
+.contact__icon {
+  display: inline-block;
+  width: unit( @baseLineHeight * 2, rem );
+  height: unit( @baseLineHeight * 2, rem );
+  fill: @baseColor;
 }
