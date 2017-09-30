@@ -22,11 +22,6 @@ module.exports = {
 			menu: 'O mnie'
 		},
 
-		'projekty': {
-			title: 'Projekty',
-			description: 'Projekty będące owocami płodnego umysłu Comandeera, czyli Frankensteiny Internetu.',
-			menu: 'Projekty'
-		},
 		'kontakt': {
 			title: 'Kontakt',
 			description: 'Kontakt – jak dorwać Comandeera.',
