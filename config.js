@@ -7,7 +7,7 @@ module.exports = {
 	frontPage: 'index',
 	generateMenu: true,
 	includeFrontInMenu: false,
-	uri: ( process.env.DOMOWA_DEV ? 'http://comandeer.dev/' : 'https://www.comandeer.pl/' ),
+	uri: ( process.env.DOMOWA_DEV ? 'http://comandeer.test/' : 'https://www.comandeer.pl/' ),
 	menu: {
 		mainClass: 'nav__menu menu',
 		itemClass: 'menu__item',
