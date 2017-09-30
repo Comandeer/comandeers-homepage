@@ -6,7 +6,7 @@ module.exports = {
 	layout: 'main',
 	frontPage: 'index',
 	generateMenu: true,
-	includeFrontInMenu: false,
+	includeFrontInMenu: `Comandeer's Homepage`,
 	uri: ( process.env.DOMOWA_DEV ? 'http://comandeer.test/' : 'https://www.comandeer.pl/' ),
 	menu: {
 		mainClass: 'nav__menu menu',

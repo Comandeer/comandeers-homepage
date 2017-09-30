@@ -28,18 +28,9 @@
 		</head>
 		<body>
 			<a href="#tresc" class="sr-only skip-link">Przewiń do&nbsp;treści&nbsp;<span aria-hidden="true">⇩</span></a>
-			<header id="naglowek" class="header" typeof="WPHeader">
-				<h1 class="header__logo logo">
-					<a href="/" class="logo__link" title="Skocz na główną" lang="en" hreflang="pl">
-						<span class="logo__text">Comandeer's Homepage</span>
-					</a>
-				</h1>
-
-				<nav class="header__nav nav" id="menu" typeof="SiteNavigationElement">
-					<h2 class="nav__title" property="name">Menu</h2>
-					{MENU}
-				</nav>
-			</header>
+			<nav id="naglowek" class="header nav" typeof="SiteNavigationElement">
+				{MENU}
+			</nav>
 			<main id="tresc" class="content" property="mainContentOfPage" typeof="WebPageElement" tabindex="-1">
 				{CONTENT}
 			</main>

@@ -6,11 +6,9 @@ module.exports = function( config, page ) {
 	const menu = [ `<ul class="${ config.menu.mainClass }">` ];
 
 	if ( typeof config.includeFrontInMenu === 'string' && config.includeFrontInMenu.length > 0 ) {
-		menu.push( `<li class="${ config.menu.itemClass }">
-			<a href="${ config.frontPage }.html"
-				class="${ config.menu.linkClass }${ page === subpage ? ` ${ config.menu.activeClass }` : '' }">
-				${ config.includeFrontInMenu }
-				${ page === '' ? currentPage : '' }
+		menu.push( `<li class="${ config.menu.itemClass } logo">
+			<a href="/" class="logo__link" title="Skocz na główną" lang="en" hreflang="pl">
+				<span class="logo__text" lang="en">${ config.includeFrontInMenu }</span>
 			</a>
 		</li>` );
 	}

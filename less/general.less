@@ -253,7 +253,8 @@ a:hover, a:focus {
 
 .menu {
 	margin: 0;
-	display: inline-flex;
+	display: flex;
+	width: 100%;
 	justify-content: space-between;
 }
 
@@ -266,6 +267,7 @@ a:hover, a:focus {
 	line-height: @logoHeight;
 	padding: 0 unit( @baseLineHeight / 2, rem );
 	border: none;
+	text-transform: uppercase;
 }
 
 .menu__link_active {
