@@ -237,24 +237,7 @@ a:hover, a:focus {
 .logo__link:hover, .logo__link:focus {
 	background-position: 0 -@logoHeight;
 }
-.header__nav-toggler {
-	font-size: @navFontSize;
-}
-.nav {
-	display: none;
-}
-.header__nav:target, .nav_open {
-	display: block;
-	position: absolute;
-	z-index: 100;
-	top: @logoHeight;
-	left: 0;
-	right: 0;
-	.footer;
-	padding: unit( @baseLineHeight / 3, rem ) 0;
-	bottom: auto;
-	border-radius: 0;
-}
+
 .nav__menu {
 	margin: 0;
 }
@@ -264,62 +247,40 @@ a:hover, a:focus {
 	font-size: @h2Size;
 	line-height: @baseLineHeight * 2;
 }
+.nav__title {
+	.sr-only;
+}
+
+.menu {
+	margin: 0;
+	display: inline-flex;
+	justify-content: space-between;
+}
+
 .menu__link {
 	display: block;
-	text-decoration: none;
-	text-transform: uppercase;
-	.footer__link;
-	line-height: 2;
+	color: @menuColor;
+	background: @menuBackground;
+	font-size: 1rem;
+	height: @logoHeight;
+	line-height: @logoHeight;
+	padding: 0 unit( @baseLineHeight / 2, rem );
+	border: none;
 }
+
+.menu__link_active {
+	border: 2px @menuHoverBackground solid;
+}
+
 .menu__link_active::before {
-	content: '→ ';
-	speak: none;
+	display: none;
 }
-@media screen and (min-width: 600px) {
-	.header__nav-toggler {
-		display: none;
-	}
-	.nav__title {
-		.sr-only;
-	}
 
-	.nav {
-		display: block;
-	}
-
-	.menu {
-		margin: 0;
-		display: inline-flex;
-		justify-content: space-between;
-	}
-
-	.menu__item {
-		display: block;
-	}
-
-	.menu__link {
-		color: @menuColor;
-		background: @menuBackground;
-		font-size: 1rem;
-		height: @logoHeight;
-		line-height: @logoHeight;
-		padding: 0 unit( @baseLineHeight / 2, rem );
-		border: none;
-	}
-
-	.menu__link_active {
-		border: 2px @menuHoverBackground solid;
-	}
-
-	.menu__link_active::before {
-		display: none;
-	}
-
-	.menu__link:hover, .menu__link:focus {
-		color: @menuHoverColor;
-		background: @menuHoverBackground;
-	}
+.menu__link:hover, .menu__link:focus {
+	color: @menuHoverColor;
+	background: @menuHoverBackground;
 }
+
 .content {
 	min-height: unit( @baseLineHeight * 4, rem );
 	padding: 0 unit( @baseLineHeight / 2, rem ) unit( @baseLineHeight, rem ) unit( @baseLineHeight / 2, rem );
@@ -394,28 +355,4 @@ Accessibility
 }
 .skip-link:hover, .skip-link:focus {
 	color: #000;
-}
-/**********************************************
-Lightbox :D
-**********************************************/
-.zoomer {
-	position: fixed;
-	z-index: 900;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(0,0,0,.7);
-	display: none;
-	cursor: zoom-out;
-}
-.zoomer_visible {
-	display: block;
-}
-.zoomer__image {
-	display: block;
-	max-width: 90%;
-	max-height: 90%;
-	margin: 0 auto;
-	z-index: 1000;
 }
