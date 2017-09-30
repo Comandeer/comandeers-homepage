@@ -16,12 +16,6 @@ module.exports = {
 		hintClass: 'sr-only',
 	},
 	subpages: {
-		'o-mnie': {
-			title: 'O mnie',
-			description: 'Krótko i treściwie o uroczej osobie Comandeera. Czemu nie chcesz go poznać.',
-			menu: 'O mnie'
-		},
-
 		'kontakt': {
 			title: 'Kontakt',
 			description: 'Kontakt – jak dorwać Comandeera.',
