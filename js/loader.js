@@ -21,7 +21,5 @@
 
 
 	// And now load all scripts.
-	loadJS( '/js/menu.{TIMESTAMP}.js' );
-	loadJS( '/js/zoom.{TIMESTAMP}.js' );
 	loadJS( 'https://www.google-analytics.com/analytics.js' )
 } () );
