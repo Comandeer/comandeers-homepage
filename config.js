@@ -52,11 +52,9 @@ module.exports = {
 		'images'
 	],
 	serverPushes: {
-		always: [
-			'/images/custom/logo2.png',
-			'/js/menu.js',
-			'/js/zoom.js'
-		]
+		always: {
+			'/images/custom/logo2.png': 'image'
+		}
 	},
 	CSP: {
 		header: `${ process.env.DOMOWA_DEV ? '' : 'upgrade-insecure-requests;' }default-src 'self'; connect-src 'self'; object-src 'none'; img-src 'self' *.google-analytics.com data:; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self';`,

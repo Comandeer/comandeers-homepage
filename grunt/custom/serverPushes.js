@@ -8,7 +8,7 @@ module.exports = function( grunt ) {
 		const timestamp = config.timestamp;
 		const pushes = config.serverPushes || {};
 		const pages = Object.keys( config.subpages );
-		const header = `Header add Link "<{RES}>;rel=preload" env=no_secure
+		const header = `Header add Link "<{RES}>;rel=preload;as={TYPE}" env=no_secure
 		H2PushResource add "{RES}"`;
 		const template = `<Files "{FILE}">
 			{RULES}
@@ -19,10 +19,10 @@ module.exports = function( grunt ) {
 		const alwaysRules = []
 		let output = '';
 
-		function prepareHeader( res ) {
+		function prepareHeader( res, type = 'style' ) {
 			res = addTimeStamp( res );
 
-			return header.replace( /{RES}/g, res );
+			return header.replace( /{RES}/g, res ).replace( /{TYPE}/g, type );
 		}
 
 		function addTimeStamp( res ) {
@@ -36,8 +36,8 @@ module.exports = function( grunt ) {
 		}
 
 		if ( pushes.always ) {
-			pushes.always.forEach( ( push ) => {
-				alwaysRules.push( prepareHeader( push ) );
+			Object.keys( pushes.always ).forEach( ( push ) => {
+				alwaysRules.push( prepareHeader( push, pushes.always[ push ] ) );
 			} );
 
 			output += templateAlways.replace( /{RULES}/g, alwaysRules.join( '\n' ) );
