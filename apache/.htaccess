@@ -165,6 +165,7 @@ RewriteRule ^(.*)index.(php|html|htm)$ /$1 [R=301,L]
 
 RewriteRule ^o_mnie.html$ /o-mnie.html [R=301,L]
 RewriteRule ^o-mnie.html$ /#o-mnie [NE,R=301,L]
+RewriteRule ^kontakt.html$ /#kontakt [NE,R=301,L]
 RewriteRule ^projekty.html$ https://github.com/Comandeer [R=301,L]
 
 RewriteCond %{HTTP_HOST} ^www\.comandeer\.pl [NC,OR]

@@ -16,12 +16,6 @@ module.exports = {
 		hintClass: 'sr-only',
 	},
 	subpages: {
-		'kontakt': {
-			title: 'Kontakt',
-			description: 'Kontakt – jak dorwać Comandeera.',
-			menu: 'Kontakt'
-		},
-
 		'cookies': {
 			title: 'Cookies',
 			description: 'Smaczne kąski i ich znaczenie dla strony.',
