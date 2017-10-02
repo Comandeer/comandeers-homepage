@@ -10,7 +10,7 @@ Yes, Eric Meyer's one
 	box-sizing: inherit;
 	scroll-behavior: smooth;
 }
-html, body, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address, em, img, small, strong, dd, dl, dt, li, ol, ul {
+html, body, h1, h2, p, a, address, img, dd, dl, dt, ul, li {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -18,7 +18,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, blockquote, a, abbr, address, em, img, sm
 	font-style: normal;
 	line-height: @baseLineHeight;
 }
-ol, ul {
+ul {
 	list-style: none;
 }
 html {
@@ -27,7 +27,7 @@ html {
 	-ms-text-size-adjust: 100%;
 	text-size-adjust: 100%;
 }
-article, aside, details, figcaption, figure, footer, header, main, nav, section {
+article, footer, header, main, nav {
 	display: block;
 }
 img {
@@ -44,52 +44,11 @@ p {
 	font-weight: normal;
 	margin-bottom: unit( @baseLineHeight / 2, rem );
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
 	font-weight: bold;
 	margin-bottom: unit( @baseLineHeight, rem );
 	clear:both;
 	line-height: unit( @baseLineHeight * 2, rem );
-}
-h1 {
-	font-size: @h1Size;
-}
-h2 {
-	font-size: @h2Size;
-}
-h3 {
-	font-size: @h3Size;
-}
-h4 {
-	font-size: @h4Size;
-}
-h5 {
-	font-size: @h5Size;
-}
-h6 {
-	font-size: @h6Size;
-	text-transform: uppercase;
-}
-abbr {
-	cursor: help;
-	text-decoration: none;
-	border-bottom: @abbrBottom;
-}
-a abbr {
-	cursor: pointer;
-	border-bottom: none;
-}
-ul, ol {
-	margin: 0 unit( @baseLineHeight, rem );
-}
-ul {
-	list-style: disc;
-}
-ol {
-	list-style: decimal;
-}
-ul.unstyled {
-	list-style: none;
-	margin-left: 0;
 }
 dl {
 	margin-bottom: unit( @baseLineHeight / 2, rem );
@@ -99,20 +58,6 @@ dl dt {
 }
 dl dd {
 	margin-left: unit( @baseLineHeight / 2, rem );
-}
-hr {
-	margin: unit( @baseLineHeight, rem ) 0 unit( @baseLineHeight / 2, rem );
-	border: 0;
-	border-bottom: @hrWidth solid @hrColor;
-}
-strong {
-	font-style: inherit;
-	font-weight: bold;
-}
-em {
-	font-style: italic;
-	font-weight: inherit;
-	line-height: inherit;
 }
 address {
 	display: block;
@@ -145,7 +90,7 @@ body {
 	}
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
 	clear: both;
 }
 
@@ -177,37 +122,11 @@ a:hover, a:focus {
 		text-decoration: none;
 	}
 }
-.button_disabled, .button[disabled] {
-	cursor: not-allowed;
-}
-.button:hover, .button:focus {
-	background-color: @buttonHoverBackgroundStatic;
-	background: @buttonHoverBackground;
-	color: @buttonColor;
-}
-.button, .button_disabled:hover, .button_disabled:focus {
-	display: inline-block;
-	background-color: @buttonBackgroundStatic;
-	background: @buttonBackground;
-	color: @buttonColor;
-	text-shadow: @buttonShadow;
-	text-align: center;
-	text-decoration: none;
-	border-radius: @baseBorderRadius;
-	height: unit( @baseLineHeight * 2, rem );
-	line-height: 2;
-	font-size: unit( @baseLineHeight, rem );
-	padding: 0 unit( @baseLineHeight / 3, rem ) 0 unit( @baseLineHeight / 3, rem );
-	border: none;
-	margin: unit( @baseLineHeight, rem );
-}
 .header {
 	height: @logoHeight;
 	display: flex;
 	justify-content: space-between;
 	align-items: stretch;
-}
-.header__logo {
 }
 .logo__link {
 	display: block;
@@ -247,9 +166,6 @@ a:hover, a:focus {
 	text-align: center;
 	font-size: @h2Size;
 	line-height: @baseLineHeight * 2;
-}
-.nav__title {
-	.sr-only;
 }
 
 .menu {
