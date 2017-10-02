@@ -1,7 +1,7 @@
 module.exports = {
 	main: {
 		files: {
-			[ `dist/js/loader.${ global.config.timestamp }.js` ]: 'js/loader.js'
+			[ `dist/js/main.${ global.config.timestamp }.js` ]: 'js/main.js'
 		}
 	}
 };

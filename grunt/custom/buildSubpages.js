@@ -34,6 +34,8 @@ module.exports = function( grunt ) {
 			const menu = generateMenu( config, self );
 			let output = layout.replace( /{CONTENT}/g, template );
 
+			output = output.replace( /{TIMESTAMP}/g, timestamp );
+
 			output = output.replace( /{CSS}/g, css.str );
 			output = output.replace( /{CSSSRI}/g, sri[ `@dist/${ css.link }` ].integrity );
 			output = output.replace( /{CSSLINK}/g, css.link );

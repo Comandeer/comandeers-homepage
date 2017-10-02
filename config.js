@@ -1,5 +1,7 @@
+var timestamp = Date.now();
+
 module.exports = {
-	timestamp: Date.now(),
+	timestamp,
 	title: 'Comandeer\'s Homepage',
 	description: 'Comandeerowa domowa, czyli Comandeera miejsce w Sieci – ciasne, ale (chyba) własne.',
 	titleSeparator: ' @ ',

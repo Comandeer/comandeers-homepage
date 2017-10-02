@@ -6,7 +6,6 @@ default:
   - 'autoprefixer:main'
   - 'csso:main'
   - 'copy:main'
-  - 'prepareScriptLoader'
   - 'sri'
   - 'generateRobotstxt'
   - 'generateHumanstxt'
