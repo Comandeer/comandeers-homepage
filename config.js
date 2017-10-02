@@ -14,6 +14,10 @@ module.exports = {
 		linkClass: 'menu__link',
 		activeClass: 'menu__link_active',
 		hintClass: 'sr-only',
+		links: {
+			'O mnie': '/#o-mnie',
+			'Kontakt': '/#kontakt'
+		}
 	},
 	subpages: {
 		'cookies': {

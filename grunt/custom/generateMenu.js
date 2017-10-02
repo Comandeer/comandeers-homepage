@@ -1,7 +1,7 @@
 module.exports = function( config, page ) {
 	'use strict';
 
-	const subpages = config.subpages;
+	const links = config.menu.links;
 	const currentPage = `<span class="${ config.menu.hintClass }">(aktywna strona)</span>`;
 	const menu = [ `<ul class="${ config.menu.mainClass }">` ];
 
@@ -13,18 +13,16 @@ module.exports = function( config, page ) {
 		</li>` );
 	}
 
-	Object.keys( subpages ).forEach( ( subpage ) => {
-		const current = subpages[ subpage ];
+	Object.keys( links ).forEach( ( link ) => {
+		const current = links[ link ];
 
-		if ( current.menu ) {
-			menu.push( `<li class="${ config.menu.itemClass }">
-				<a href="/${ subpage }.html"
-					class="${ config.menu.linkClass }${ page === subpage ? ` ${ config.menu.activeClass }` : '' }">
-					${ current.menu }
-					${ page === subpage ? currentPage : '' }
-				</a>
-			</li>` );
-		}
+		menu.push( `<li class="${ config.menu.itemClass }">
+			<a href="${ current }"
+				class="${ config.menu.linkClass }${ page === current ? ` ${ config.menu.activeClass }` : '' }">
+				${ link }
+				${ page === current ? currentPage : '' }
+			</a>
+		</li>` );
 	} );
 
 	menu.push( '</ul>' );
