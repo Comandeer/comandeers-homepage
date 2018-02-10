@@ -21,7 +21,9 @@ Contact
 
 .contact__item {
 	vertical-align: middle;
+	margin-right: 1rem;
 }
+
 .contact__link {
 	text-decoration: underline;
 	line-height: unit( @baseLineHeight * 2, rem );
@@ -38,6 +40,13 @@ Contact
 	clear: left;
 	margin-left: 0;
 }
+
+@media screen and (min-width: 641px) {
+	.contact__method {
+		clear: none;
+	}
+}
+
 .contact__icon {
   display: inline-block;
   width: unit( @baseLineHeight * 2, rem );
