@@ -98,12 +98,13 @@ a {
 	display: inline-block;
 	padding: unit( @baseLineHeight / 2, rem );
 	margin: unit( @baseLineHeight / 3, rem ) 0;
-	border: 1px #fff solid;
+	border: 1px @baseColor solid;
 	text-decoration: none;
-	vertical-align: middle;
+	vertical-align: baseline;
 	color: @linkColor;
 	/*Transitions!!!*/
 	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	text-decoration-skip-ink: auto;
 }
 
 a:hover, a:focus {
