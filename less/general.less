@@ -67,7 +67,7 @@ address {
 General ones
 **********************************************/
 :focus {
-	outline: 2px #ff0 dashed;
+	outline: 2px #f00 dashed;
 }
 html {
 	box-sizing: border-box;
@@ -101,7 +101,7 @@ a {
 	border: 1px #fff solid;
 	text-decoration: none;
 	vertical-align: middle;
-	color: @baseColor;
+	color: @linkColor;
 	/*Transitions!!!*/
 	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -213,8 +213,6 @@ a:hover, a:focus {
 	text-shadow: @articleTitleShadow;
 }
 .footer {
-	background-color: @footerBackgroundStatic;
-	background: @footerBackground;
 	color: @boxTextColor;
 	padding: unit( @baseLineHeight / 3, rem );
 	text-align: center;
@@ -222,24 +220,11 @@ a:hover, a:focus {
 	border-radius: 0;
 }
 
-.footer :focus {
-	outline-color: #000;
-}
-
 .footer__link{
 	padding: 0;
 	border: none;
 	line-height: 1;
 	text-decoration: underline;
-}
-
-.footer__link {
-	color: @boxTextColor;
-}
-
-.footer__link:hover, .footer__link:focus {
-	color: @boxTextColor;
-	text-decoration: none;
 }
 
 
