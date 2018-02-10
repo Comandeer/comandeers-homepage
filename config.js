@@ -22,11 +22,6 @@ module.exports = {
 		}
 	},
 	subpages: {
-		'cookies': {
-			title: 'Cookies',
-			description: 'Smaczne kąski i ich znaczenie dla strony.',
-			menu: false
-		},
 		404: {
 			title: 'Nie ma takiej strony',
 			description: 'Nie ma takiej strony',
