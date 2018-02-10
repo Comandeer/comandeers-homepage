@@ -124,12 +124,18 @@ a:hover, a:focus {
 	}
 }
 .header {
-	height: @logoHeight;
 	display: flex;
 	justify-content: space-between;
 	align-items: stretch;
 	border-bottom: 1px solid @contentBorderColor;
 }
+
+@media screen and (min-width: 300px) {
+	.header {
+		height: @logoHeight;
+	}
+}
+
 .logo__link {
 	display: block;
 	text-decoration: none;
@@ -183,11 +189,16 @@ a:hover, a:focus {
 	color: @menuColor;
 	background: @menuBackground;
 	font-size: 1rem;
-	height: @logoHeight;
 	line-height: @logoHeight;
 	padding: 0 unit( @baseLineHeight / 2, rem );
 	border: none;
 	text-transform: uppercase;
+}
+
+@media screen and (min-width: 300px) {
+	.menu__link {
+		height: @logoHeight;
+	}
 }
 
 .menu__link_active {
