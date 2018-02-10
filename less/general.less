@@ -67,7 +67,7 @@ address {
 General ones
 **********************************************/
 :focus {
-	outline: 2px #ff0 dashed;
+	outline: 2px #f00 dashed;
 }
 html {
 	box-sizing: border-box;
@@ -98,12 +98,13 @@ a {
 	display: inline-block;
 	padding: unit( @baseLineHeight / 2, rem );
 	margin: unit( @baseLineHeight / 3, rem ) 0;
-	border: 1px #fff solid;
+	border: 1px @baseColor solid;
 	text-decoration: none;
-	vertical-align: middle;
-	color: @baseColor;
+	vertical-align: baseline;
+	color: @linkColor;
 	/*Transitions!!!*/
 	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	text-decoration-skip-ink: auto;
 }
 
 a:hover, a:focus {
@@ -123,11 +124,18 @@ a:hover, a:focus {
 	}
 }
 .header {
-	height: @logoHeight;
 	display: flex;
 	justify-content: space-between;
 	align-items: stretch;
+	border-bottom: 1px solid @contentBorderColor;
 }
+
+@media screen and (min-width: 300px) {
+	.header {
+		height: @logoHeight;
+	}
+}
+
 .logo__link {
 	display: block;
 	text-decoration: none;
@@ -181,11 +189,16 @@ a:hover, a:focus {
 	color: @menuColor;
 	background: @menuBackground;
 	font-size: 1rem;
-	height: @logoHeight;
 	line-height: @logoHeight;
 	padding: 0 unit( @baseLineHeight / 2, rem );
 	border: none;
 	text-transform: uppercase;
+}
+
+@media screen and (min-width: 300px) {
+	.menu__link {
+		height: @logoHeight;
+	}
 }
 
 .menu__link_active {
@@ -213,33 +226,19 @@ a:hover, a:focus {
 	text-shadow: @articleTitleShadow;
 }
 .footer {
-	background-color: @footerBackgroundStatic;
-	background: @footerBackground;
 	color: @boxTextColor;
 	padding: unit( @baseLineHeight / 3, rem );
 	text-align: center;
 	line-height: @baseLineHeight * 2;
 	border-radius: 0;
+	border-top: 1px solid @contentBorderColor;
 }
 
-.footer :focus {
-	outline-color: #000;
-}
-
-.footer__link{
+.footer__link {
 	padding: 0;
 	border: none;
 	line-height: 1;
 	text-decoration: underline;
-}
-
-.footer__link {
-	color: @boxTextColor;
-}
-
-.footer__link:hover, .footer__link:focus {
-	color: @boxTextColor;
-	text-decoration: none;
 }
 
 
