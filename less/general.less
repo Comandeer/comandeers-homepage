@@ -61,13 +61,18 @@ dl dd {
 }
 address {
 	display: block;
-	margin-bottom: @baseLineHeight;
 }
 /**********************************************
 General ones
 **********************************************/
 :focus {
 	outline: 2px #f00 dashed;
+}
+:focus-visible {
+	outline: 2px #f00 dashed;
+}
+:focus:not(:focus-visible) {
+	outline: none;
 }
 html {
 	box-sizing: border-box;
@@ -191,7 +196,7 @@ a:hover, a:focus {
 	font-size: 1rem;
 	line-height: @logoHeight;
 	padding: 0 unit( @baseLineHeight / 2, rem );
-	border: none;
+	border: 2px transparent solid;
 	text-transform: uppercase;
 }
 
