@@ -25,14 +25,17 @@ Contact
 }
 
 .contact__link {
-	text-decoration: underline;
-	line-height: unit( @baseLineHeight * 2, rem );
-	padding: 0;
-	border: none;
+	margin: 0;
 }
-.contact__link:hover, .contact__link:focus {
-	text-decoration: none;
+
+@media screen and (min-width: 769px) {
+	.contact__link {
+		display: block;
+		height: unit( @baseLineHeight * 2, rem );
+		line-height: @baseLineHeight * 2;
+	}
 }
+
 .contact__method {
 	height: unit( @baseLineHeight * 2, rem );
 	width: unit( @baseLineHeight * 2, rem );
@@ -41,7 +44,7 @@ Contact
 	margin-left: 0;
 }
 
-@media screen and (min-width: 641px) {
+@media screen and (min-width: 769px) {
 	.contact__method {
 		clear: none;
 	}
