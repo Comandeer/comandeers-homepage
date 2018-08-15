@@ -2,6 +2,7 @@
 Variables import
 **********************************************/
 @import "vars.less";
+@import "animations.less";
 /**********************************************
 CSS Reset
 Yes, Eric Meyer's one
@@ -74,6 +75,16 @@ General ones
 :focus:not(:focus-visible) {
 	outline: none;
 }
+[tabindex="-1"] {
+	outline: none;
+}
+
+@media screen and ( min-height: 800px ) {
+	:target {
+		animation: blink 1s 1;
+	}
+}
+
 html {
 	box-sizing: border-box;
 	background: @pageBackground;
