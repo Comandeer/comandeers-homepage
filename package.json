@@ -20,7 +20,7 @@
     "grunt-manifest": "^0.4.4",
     "grunt-sri": "0.2.0",
     "load-grunt-config": "^1.0.0",
-    "time-grunt": "^1.2.2"
+    "time-grunt": "^2.0.0"
   },
   "repository": "",
   "author": "Comandeer",
