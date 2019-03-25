@@ -52,7 +52,7 @@ module.exports = {
 		}
 	},
 	CSP: {
-		header: `${ process.env.DOMOWA_DEV ? '' : 'upgrade-insecure-requests;' }default-src 'self'; connect-src 'self'; object-src 'none'; img-src 'self'; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self';`,
+		header: `'upgrade-insecure-requests;'default-src 'self'; connect-src 'self'; object-src 'none'; img-src 'self'; child-src 'self' *.youtube-nocookie.com; frame-ancestors 'self';`,
 		script: "",
 		style: ""
 	}
