@@ -29,7 +29,7 @@
     "build": "grunt dist"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^2.0.0"
+    "cz-conventional-changelog": "^3.0.0"
   },
   "config": {
     "commitizen": {
