@@ -111,6 +111,7 @@ AddDefaultCharset utf-8
 	Header set X-XSS-Protection "1; mode=block"
 	Header set Timing-Allow-Origin "*"
 	Header set Content-Security-Policy "{CSP}"
+	Header set Feature-Policy "ambient-light-sensor 'none';accelerometer 'none';camera 'none';display-capture 'none';document-domain 'none';geolocation 'none';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'none';sync-xhr 'none';usb 'none';wake-lock 'none';webauthn 'none';vr 'none';xr 'none';vibrate 'none'"
 	Header set Referrer-Policy "no-referrer"
 
 	# `mod_headers` cannot match based on the content-type, however, this header
