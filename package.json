@@ -6,7 +6,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.1",
     "glob": "^7.0.3",
-    "grunt": "^1.0.1",
+    "grunt": "^1.1.0",
     "grunt-autoprefixer": "^3.0.3",
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-connect": "^2.0.0",
