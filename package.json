@@ -4,22 +4,22 @@
   "main": "Gruntfile.js",
   "private": true,
   "dependencies": {
-    "cheerio": "^1.0.0-rc.1",
-    "glob": "^7.0.3",
+    "cheerio": "^0.22.0",
+    "glob": "^7.1.6",
     "grunt": "^1.0.1",
-    "grunt-autoprefixer": "^3.0.3",
+    "grunt-autoprefixer": "^3.0.4",
     "grunt-contrib-clean": "^2.0.0",
-    "grunt-contrib-connect": "^2.0.0",
+    "grunt-contrib-connect": "^2.1.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-htmlmin": "^3.0.0",
-    "grunt-contrib-imagemin": "^3.0.0",
+    "grunt-contrib-htmlmin": "^3.1.0",
+    "grunt-contrib-imagemin": "^4.0.0",
     "grunt-contrib-less": "^2.0.0",
-    "grunt-contrib-uglify": "^4.0.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-csso": "^2.0.1",
+    "grunt-contrib-uglify": "^4.0.1",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-csso": "^2.2.4",
     "grunt-manifest": "^0.4.4",
-    "grunt-sri": "0.2.0",
-    "load-grunt-config": "^3.0.0",
+    "grunt-sri": "^0.2.0",
+    "load-grunt-config": "^3.0.1",
     "time-grunt": "^2.0.0"
   },
   "repository": "",
@@ -29,7 +29,7 @@
     "build": "grunt dist"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.0.0"
+    "cz-conventional-changelog": "^3.1.0"
   },
   "config": {
     "commitizen": {
