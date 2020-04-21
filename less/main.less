@@ -1,5 +1,141 @@
 /**********************************************
-Main
+Variables import
 **********************************************/
-@import "general.less";
-@import "kontakt.less";
+@import "vars.less";
+/**********************************************
+CSS Reset
+Yes, Eric Meyer's one
+**********************************************/
+*, *::before, *::after {
+	box-sizing: inherit;
+	scroll-behavior: smooth;
+}
+
+@media ( prefers-reduced-motion ) {
+	*, *::before, *::after {
+		scroll-behavior: auto !important;
+		transition: none !important;
+	}
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: normal;
+	font-style: normal;
+	font-family: @baseFontFamily;
+	line-height: @baseLineHeight;
+}
+
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+	max-width: 100%;
+	height: auto;
+}
+/**********************************************
+General ones
+**********************************************/
+:focus {
+	outline: 2px #e00 dashed;
+}
+
+:focus-visible {
+	outline: 2px #e00 dashed;
+}
+
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+[tabindex="-1"] {
+	outline: none;
+}
+
+html {
+	overflow-y: scroll;
+	box-sizing: border-box;
+	background: @pageBackground;
+	font-family: @baseFontFamily;
+	font-weight: normal;
+	// font-size: clamp( 1rem, 1rem + 2vw, 1.5rem );
+	color: @baseColor;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	word-break: break-word;
+}
+
+body {
+	max-width: 70ch;
+	margin: 0;
+	padding: 0;
+}
+
+
+@media screen and ( min-width: 70ch ) {
+	html {
+		background: url(/images/custom/logo.svg) no-repeat center center;
+	}
+
+	body {
+		background: rgba( 255, 255, 255, .9);
+	}
+}
+
+a {
+	display: inline-block;
+	padding: unit( @baseLineHeight / 2, rem );
+	margin: unit( @baseLineHeight / 3, rem ) 0;
+	border: 1px @baseColor solid;
+	text-decoration: none;
+	vertical-align: baseline;
+	color: @linkColor;
+	/*Transitions!!!*/
+	transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+	text-decoration-skip-ink: auto;
+}
+
+a:hover, a:focus {
+	color: darken( @linkColor, 10% );
+}
+
+@media screen and (pointer: fine) {
+	a {
+		display: inline;
+		padding: 0;
+		margin: 0;
+		text-decoration: underline;
+		border: none;
+	}
+	a:hover, a:focus {
+		text-decoration: none;
+	}
+}
+
+.content {
+	min-height: unit( @baseLineHeight * 4, rem );
+	padding: 0 unit( @baseLineHeight / 2, rem ) unit( @baseLineHeight, rem ) unit( @baseLineHeight / 2, rem );
+	outline: none;
+}
+
+.contact-methods {
+	font-style: normal;
+}
+
+.contact-methods__list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 0;
+}
+
+@media ( min-width: 70ch ) {
+	.contact-methods__list {
+		flex-direction: row;
+	}
+}
