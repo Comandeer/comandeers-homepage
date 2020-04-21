@@ -20,6 +20,16 @@ module.exports = {
 				],
 				dest: 'dist',
 				filter: 'isFile'
+			},
+
+			{
+				expand: true,
+				flatten: true,
+				src: [
+					'resources/favicons/**'
+				],
+				dest: 'dist',
+				filter: 'isFile'
 			}
 		]
 	}

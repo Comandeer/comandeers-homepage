@@ -9,7 +9,7 @@ module.exports = {
 	frontPage: 'index',
 	generateMenu: true,
 	includeFrontInMenu: `Comandeer's Homepage`,
-	uri: ( process.env.DOMOWA_DEV ? 'http://comandeer.test/' : 'https://www.comandeer.pl/' ),
+	uri: ( process.env.DOMOWA_DEV ? 'https://comandeer.test/' : 'https://www.comandeer.pl/' ),
 	menu: {
 		mainClass: 'nav__menu menu',
 		itemClass: 'menu__item',
@@ -48,7 +48,7 @@ module.exports = {
 	],
 	serverPushes: {
 		always: {
-			'/images/custom/logo2.png': 'image'
+			'/images/custom/logo.svg': 'image'
 		}
 	},
 	CSP: {

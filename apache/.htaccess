@@ -110,7 +110,6 @@ AddDefaultCharset utf-8
 	Header set X-Frame-Options "SAMEORIGIN"
 	Header set X-XSS-Protection "1; mode=block"
 	Header set Timing-Allow-Origin "*"
-	Header set Content-Security-Policy "{CSP}"
 	Header set Feature-Policy "ambient-light-sensor 'none';accelerometer 'none';camera 'none';display-capture 'none';document-domain 'none';geolocation 'none';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'none';sync-xhr 'none';usb 'none';wake-lock 'none';webauthn 'none';vr 'none';xr 'none';vibrate 'none'"
 	Header set Referrer-Policy "no-referrer"
 
@@ -122,6 +121,7 @@ AddDefaultCharset utf-8
 
 	<FilesMatch "\.(html|eot|otf|tt[cf]|woff2?)$">
 		Header set Access-Control-Allow-Origin "*"
+		Header set Content-Security-Policy "{CSP}"
 	</FilesMatch>
 
 	Header unset X-Powered-By
