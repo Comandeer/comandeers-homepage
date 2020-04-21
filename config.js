@@ -3,7 +3,7 @@ var timestamp = Date.now();
 module.exports = {
 	timestamp,
 	title: 'Comandeer\'s Homepage',
-	description: 'Comandeerowa domowa, czyli Comandeera miejsce w Sieci – ciasne, ale (chyba) własne.',
+	description: 'Comandeer\'s Homepage. Just some links to his other sites and profiles.',
 	titleSeparator: ' @ ',
 	layout: 'main',
 	frontPage: 'index',
@@ -23,8 +23,8 @@ module.exports = {
 	},
 	subpages: {
 		404: {
-			title: 'Nie ma takiej strony',
-			description: 'Nie ma takiej strony',
+			title: 'Page not found',
+			description: 'Page not found',
 			menu: false
 		}
 	},
