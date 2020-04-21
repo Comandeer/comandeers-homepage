@@ -56,7 +56,7 @@ General ones
 html {
 	overflow-y: scroll;
 	box-sizing: border-box;
-	background: @pageBackground;
+	background-color: @pageBackground;
 	font-family: @baseFontFamily;
 	font-weight: normal;
 	font-size: e("clamp( 1rem, 1rem + 2vw, 1.5rem )");
@@ -68,6 +68,13 @@ html {
 	word-break: break-word;
 }
 
+@media (prefers-color-scheme: dark) {
+	html {
+		background-color: @baseColor;
+		color: @pageBackground;
+	}
+}
+
 body {
 	max-width: 70ch;
 	margin: 0;
@@ -77,11 +84,19 @@ body {
 
 @media screen and ( min-width: 70ch ) {
 	html {
-		background: url(/images/custom/logo.svg) no-repeat center center;
+		background-image: url(/images/custom/logo.svg);
+		background-repeat: no-repeat;
+		background-position: center center;
 	}
 
 	body {
-		background: rgba( 255, 255, 255, .9);
+		background-color: fadeOut( @pageBackground, 10% );
+	}
+}
+
+@media screen and ( min-width: 70ch ) and ( prefers-color-scheme: dark ) {
+	body {
+		background-color: fadeOut( @baseColor, 10% );
 	}
 }
 
@@ -100,6 +115,19 @@ a {
 
 a:hover, a:focus {
 	color: darken( @linkColor, 10% );
+}
+
+@media ( prefers-color-scheme: dark ) {
+	@linkColor: darken( @pageBackground, 20% );
+
+	a {
+		border-color: @pageBackground;
+		color: @linkColor;
+	}
+
+	a:hover, a:focus {
+		color: darken( @linkColor, 10% );
+	}
 }
 
 @media screen and (pointer: fine) {
