@@ -13,7 +13,6 @@ default:
   - 'buildSubpages'
   - 'htmlmin:dist'
   - 'csp'
-  - 'serverPushes'
 
 dist:
   - 'default'
