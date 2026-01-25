@@ -127,8 +127,6 @@ AddDefaultCharset utf-8
 	Header unset X-Powered-By
 	Header unset Server
 	Header unset ETag
-
-	{PUSHES}
 </IfModule>
 
 FileETag None
